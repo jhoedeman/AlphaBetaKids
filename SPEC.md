@@ -343,21 +343,53 @@ child will not meet in a school book. **Andika** (SIL, OFL 1.1) is designed for 
 this: single-story `a` and `g`, unambiguous `I`/`l`/`1`.
 
 Bundle `Andika-Regular.ttf` and `Andika-Bold.ttf` in `Content/Resources/`, declared in
-`Info.plist` under `UIAppFonts`.
+`Info.plist` under `UIAppFonts` **by filename**. Ship `OFL.txt` alongside them — the
+Open Font License requires the license travel with the font.
 
-`Theme` exposes the font through a checked accessor rather than `Font.custom`, which
-falls back silently and would leave a wrong-letterform build looking fine:
+Version in use: **Andika 7.000** (SIL).
+
+#### PostScript names — the filenames lie
+
+`UIAppFonts` takes filenames, but `UIFont(name:)` and `Font.custom` take *PostScript*
+names, and for Andika those do not match:
+
+| File | PostScript name |
+|---|---|
+| `Andika-Regular.ttf` | **`Andika`** — not `Andika-Regular` |
+| `Andika-Bold.ttf` | `Andika-Bold` |
+
+Verified by reading the TTF `name` tables (nameID 6). Using `"Andika-Regular"` returns
+nil and falls through to the fallback — a build that looks fine while teaching the
+wrong letterforms, which is the exact failure this font was chosen to prevent.
+
+`Theme` therefore exposes the font through a checked accessor rather than
+`Font.custom`, which falls back silently:
 
 ```swift
-static func letterFont(size: CGFloat, weight: Font.Weight = .bold) -> Font {
-    UIFont(name: "Andika-Bold", size: size) != nil
-        ? .custom("Andika-Bold", size: size)
-        : .system(size: size, weight: weight, design: .rounded)
+private static func named(_ postScriptName: String, _ size: CGFloat,
+                          fallbackWeight: Font.Weight) -> Font {
+    UIFont(name: postScriptName, size: size) != nil
+        ? .custom(postScriptName, size: size)
+        : .system(size: size, weight: fallbackWeight, design: .rounded)
+}
+
+/// The hero glyph and the case row.
+static func letterFont(size: CGFloat) -> Font {
+    named("Andika-Bold", size, fallbackWeight: .bold)
+}
+
+/// Example words and labels.
+static func wordFont(size: CGFloat) -> Font {
+    named("Andika", size, fallbackWeight: .regular)
 }
 ```
 
-So the app builds and runs before the font files arrive, falling back to SF Rounded,
-and picks up the correct letterforms the moment they are added.
+So the app builds and runs before the font files arrive, falling back to SF Rounded, and
+picks up the correct letterforms the moment they are added.
+
+**Test (`ThemeTests`):** assert both PostScript names resolve to a non-nil `UIFont` once
+the resources are bundled. If a future Andika release renames a face, that test fails
+loudly instead of the app quietly degrading.
 
 ---
 
@@ -459,9 +491,10 @@ checked in code rather than by eye:
 
 ## 13. Open items for John
 
-1. **Download Andika** (OFL 1.1, free from SIL) and drop `Andika-Regular.ttf` and
-   `Andika-Bold.ttf` into `Content/Resources/`. The app builds and runs without it via
-   the SF Rounded fallback (§7.2).
+1. ~~Download Andika.~~ **Done** — Andika 7.000 is in `~/Downloads/Andika-7.000/`.
+   Copy `Andika-Regular.ttf`, `Andika-Bold.ttf`, and `OFL.txt` into
+   `Content/Resources/`. The app builds and runs without them via the SF Rounded
+   fallback (§7.2), so this is not a blocker for M1–M2.
 2. **Review Appendix A** — the word and emoji choices, with attention to the flagged
    rows.
 3. **App icon.**
