@@ -23,6 +23,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Andika-Regular.ttf</string>
+		<string>Andika-SemiBold.ttf</string>
 		<string>Andika-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

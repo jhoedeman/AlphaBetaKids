@@ -422,18 +422,26 @@ B rather than the /b/ phoneme — the wrong thing for a phonics app to teach.
 
 ## 9. Quiz tab
 
-The tab is visible and does nothing.
+The tab is visible, selectable, and lands on a themed "Quiz — Coming soon" screen
+(`QuizPlaceholderView`), which is also where the real implementation will go.
 
-**Implementation note:** SwiftUI has no disabled-tab API — not on the classic
-`.tabItem` modifier and not on the iOS 18 `Tab` type. `.disabled` on the tab's content
-does not prevent selection. So:
+**Revised during M2.** This section originally specified a *disabled* tab, implemented
+by intercepting the `TabView` selection binding and refusing writes that select Quiz.
+**That does not work, and was verified not to work on the simulator.** Refusing the
+write is a no-op: SwiftUI sees no state change, so it never invalidates the view and
+never reconciles the underlying `UITabBarController` back to Cards. The tab bar keeps
+whatever the user tapped, and the Quiz screen appears.
 
-- The root `TabView`'s selection binding intercepts writes: selecting Quiz sets
-  selection straight back to Cards.
-- The Quiz tab item renders at reduced opacity to read as unavailable.
-- `QuizPlaceholderView` exists but is never reached; it holds the future implementation.
+SwiftUI genuinely has no disabled-tab API — not on the classic `.tabItem` modifier, not
+on the iOS 18 `Tab` type, and `.disabled` on a tab's content does not prevent selection.
+The only ways to make it stick are:
 
-It behaves as disabled; it is not literally `.disabled`.
+- select Quiz and bounce back on the next runloop, which flashes the Quiz screen; or
+- overlay hit-testing hacks on the tab bar, which are fragile and break VoiceOver.
+
+Neither is worth it to withhold a screen that is friendlier than a dead control, so the
+"coming soon" screen ships instead. If a truly inert tab is wanted later, hiding the tab
+entirely until the quiz exists is the clean option — not faking `disabled`.
 
 ---
 
