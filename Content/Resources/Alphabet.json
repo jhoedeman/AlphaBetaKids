@@ -277,7 +277,7 @@
       "words": [
         { "text": "tiger", "emoji": "🐯" },
         { "text": "truck", "emoji": "🚚" },
-        { "text": "train", "emoji": "🚂" },
+        { "text": "tent", "emoji": "⛺️" },
         { "text": "teeth", "emoji": "🦷" }
       ]
     },
@@ -333,7 +333,7 @@
       "words": [
         { "text": "box", "emoji": "📦" },
         { "text": "fox", "emoji": "🦊" },
-        { "text": "six", "emoji": "6️⃣" },
+        { "text": "axe", "emoji": "🪓" },
         { "text": "ox", "emoji": "🐂" }
       ]
     },
@@ -362,7 +362,7 @@
         { "text": "zebra", "emoji": "🦓" },
         { "text": "zero", "emoji": "0️⃣" },
         { "text": "zip", "emoji": "🤐" },
-        { "text": "zoo", "emoji": "🐘" }
+        { "text": "zoo", "emoji": "🦒" }
       ]
     },
     {

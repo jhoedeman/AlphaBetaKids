@@ -90,6 +90,49 @@ struct ContentTests {
         }
     }
 
+    // MARK: - Pictures
+
+    /// For a pre-reader the emoji *is* the content, so two cards sharing one
+    /// picture teaches a collision — the child sees the same elephant for
+    /// "elephant" and for "zoo". Reading the content table doesn't reveal
+    /// this, because it's a property of the set rather than of any one row.
+    ///
+    /// The exceptions are pairs where both words genuinely denote the same
+    /// thing, so the shared picture is honest rather than confusing.
+    @Test func picturesAreNotReusedAcrossCards() {
+        let allowed: Set<Set<String>> = [
+            ["q", "wh"],   // 🤫 quiet / whisper
+            ["q", "ck"],   // 🦆 quack / duck
+            ["sh", "ee"],  // 🐑 sheep — sh + ee = sheep, deliberate
+        ]
+
+        var cardsByEmoji: [String: Set<String>] = [:]
+        for card in cards {
+            for word in card.words {
+                cardsByEmoji[word.emoji, default: []].insert(card.lower)
+            }
+        }
+
+        for (emoji, owners) in cardsByEmoji where owners.count > 1 {
+            #expect(allowed.contains(owners),
+                    "\(emoji) is shared by \(owners.sorted().joined(separator: ", "))")
+        }
+    }
+
+    /// A child who cannot yet read letters generally cannot read numerals
+    /// either, so a keycap digit is not a picture to them. `z`/zero and
+    /// `th`/three are knowingly kept — see the verification notes in the spec
+    /// — but nothing new should join them.
+    @Test func picturesAreNotKeycapDigits() {
+        let knownExceptions = ["zero", "three"]
+        for card in cards {
+            for word in card.words where !knownExceptions.contains(word.text) {
+                #expect(!word.emoji.unicodeScalars.contains { ("0"..."9").contains(Character($0)) },
+                        "\(card.lower)/\(word.text) uses a keycap digit, not a picture")
+            }
+        }
+    }
+
     // MARK: - SPEC §3.4 — cards with no capital form
 
     @Test func exactlyTheExpectedCardsLackACapitalForm() {

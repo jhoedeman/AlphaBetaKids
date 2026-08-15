@@ -557,13 +557,13 @@ Review target. `contains` cards are marked; everything else is `startsWith`.
 | 17 | Q q | queen 👸 · question ❓ · quiet 🤫 · quack 🦆 |
 | 18 | R r | rabbit 🐰 · rainbow 🌈 · robot 🤖 · rocket 🚀 |
 | 19 | S s | sun ☀️ · snake 🐍 · star ⭐️ · spider 🕷️ |
-| 20 | T t | tiger 🐯 · truck 🚚 · train 🚂 · teeth 🦷 |
+| 20 | T t | tiger 🐯 · truck 🚚 · tent ⛺️ · teeth 🦷 |
 | 21 | U u | umbrella ☂️ · unicorn 🦄 · up ⬆️ · underwear 🩲 ⚠️ |
 | 22 | V v | violin 🎻 · van 🚐 · volcano 🌋 · vegetables 🥕 |
 | 23 | W w | water 💧 · watch ⌚️ · wolf 🐺 · worm 🪱 |
-| 24 | X x | **(contains)** box 📦 · fox 🦊 · six 6️⃣ · ox 🐂 |
+| 24 | X x | **(contains)** box 📦 · fox 🦊 · axe 🪓 · ox 🐂 |
 | 25 | Y y | yo-yo 🪀 · yellow 💛 · yarn 🧶 · yawn 🥱 |
-| 26 | Z z | zebra 🦓 · zero 0️⃣ · zip 🤐 · zoo 🐘 ⚠️ |
+| 26 | Z z | zebra 🦓 · zero 0️⃣ ⚠️ · zip 🤐 · zoo 🦒 |
 
 ### Blends
 
@@ -596,5 +596,35 @@ Review target. `contains` cards are marked; everything else is `startsWith`.
   this age and unicorn is too good to drop, but it is the one letter card that is not
   phonetically clean.
 - ⚠️ **Flagged for your review:** *igloo* 🛖 (hut emoji standing in), *underwear* 🩲
-  (the only picturable fourth option; also reliably funny to a 3-year-old), *zoo* 🐘
-  (elephant standing in).
+  (the only picturable fourth option; also reliably funny to a 3-year-old), *zero* 0️⃣
+  (see the non-pictorial note below).
+
+### Verification (2026-08-15)
+
+Appendix A was diffed mechanically against `Alphabet.json` — all 34 rows match, and
+every §3.5 rule was re-derived from the JSON rather than trusted from the test suite.
+Two classes of problem surfaced that reading the table doesn't reveal, since they are
+properties of the *set* rather than of any one row:
+
+**Duplicate pictures.** For a pre-reader the emoji is the content, so two cards sharing
+one picture teaches a collision. Fixed: `t`/train 🚂 → **tent ⛺️** (🚂 now belongs to
+`e`/engine alone), `z`/zoo 🐘 → **🦒** (🐘 now belongs to `e`/elephant alone).
+
+Left alone deliberately: 🤫 on `q`/quiet and `wh`/whisper, and 🦆 on `q`/quack and
+`ck`/duck — in both pairs the two words genuinely denote the same thing, so the shared
+picture is honest rather than confusing. 🐑 on `sh`/sheep and `ee`/sheep stays as the
+documented deliberate case.
+
+**Non-pictorial emoji.** A child who cannot yet read letters generally cannot read
+numerals either, so a keycap digit carries no meaning for the target user. Fixed:
+`x`/six 6️⃣ → **axe 🪓**, which also satisfies the `contains` rule.
+
+Not fixed, because the words themselves are worth more than the pictures: `z`/zero 0️⃣,
+`th`/three 3️⃣, and `u`/up ⬆️. Three and up are genuinely good teaching words whose only
+fault is being hard to picture; replacing them would cost more than the weak emoji does.
+Candidates if you ever want them pictorial anyway.
+
+**One phonics wrinkle, undocumented until now:** `o`/orange is r-coloured /ɔr/, a
+different vowel from octopus, otter and olive. This is the same category as the `u`
+mixture noted above, and left for the same reason — orange is too useful a word for this
+age to drop over it.
