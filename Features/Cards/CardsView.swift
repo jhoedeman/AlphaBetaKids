@@ -1,31 +1,60 @@
 import SwiftUI
 
-/// M2 skeleton: the themed screen frame the Cards tab lives in. M3 adds the
-/// pager and arrows, M4 the card faces and flip, M5 the control bar.
+/// The Cards screen. M3 wires up the pager; M4 replaces the placeholder face
+/// with the real flip card, and M5 adds the control bar above it.
 struct CardsView: View {
     let deck: CardDeck
+
+    @State private var selectedID = 1
+
+    private var cards: [LetterCard] {
+        // M5 makes this respond to the blends pill and shuffle.
+        deck.visibleCards(blendsEnabled: false)
+    }
+
+    private var position: PagerPosition {
+        .locating(id: selectedID, in: cards)
+    }
 
     var body: some View {
         ZStack {
             Theme.background.ignoresSafeArea()
 
-            VStack(spacing: 20) {
-                Text("Aa")
-                    .font(Theme.letterFont(size: 120))
-                    .foregroundStyle(Theme.accent)
-
-                Text("\(deck.visibleCards(blendsEnabled: false).count) letters, \(deck.allCards.count) cards")
-                    .font(Theme.wordFont(size: 17))
-                    .foregroundStyle(Theme.textSecondary)
-
-                if !Theme.isAvailable(.bold) {
-                    Label("Andika not bundled — showing SF Rounded", systemImage: "exclamationmark.triangle")
-                        .font(Theme.labelFont(size: 13, relativeTo: .footnote))
-                        .foregroundStyle(Theme.textSecondary)
+            VStack(spacing: 8) {
+                CardPagerView(cards: cards, selectedID: $selectedID) { card in
+                    PlaceholderCardFace(card: card)
                 }
+
+                Text("\(position.index + 1) / \(cards.count)")
+                    .font(Theme.labelFont(size: 15, relativeTo: .subheadline))
+                    .foregroundStyle(Theme.textSecondary)
+                    .accessibilityHidden(true)
             }
-            .padding()
+            .padding(.vertical, 12)
         }
+    }
+}
+
+/// Stand-in until M4 builds the real front/back faces and the flip. Exists so
+/// the paging feel can be evaluated now rather than after the card work.
+private struct PlaceholderCardFace: View {
+    let card: LetterCard
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .fill(Theme.surface)
+                .shadow(color: .black.opacity(0.15), radius: 12, y: 6)
+
+            Text(card.front(leading: .upper))
+                .font(Theme.letterFont(size: 160))
+                .minimumScaleFactor(0.3)
+                .lineLimit(1)
+                .foregroundStyle(Theme.accent)
+                .padding(24)
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(card.front(leading: .upper))
     }
 }
 
