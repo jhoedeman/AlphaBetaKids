@@ -20,6 +20,12 @@ Requires Xcode 16 / iOS 18 and [xcodegen](https://github.com/yonaskolb/XcodeGen)
 xcodegen generate && open AlphaBetaKids.xcodeproj
 ```
 
+## License
+
+The app source is MIT — see [`LICENSE`](LICENSE).
+
+The bundled font is **not** covered by that and carries its own terms, below.
+
 ## Fonts
 
 Bundles **Andika** 7.000, © 2004–2025 [SIL Global](https://www.sil.org/), with Reserved
