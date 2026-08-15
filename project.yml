@@ -1,0 +1,82 @@
+name: AlphaBetaKids
+options:
+  bundleIdPrefix: com.JohnHoedeman
+  deploymentTarget:
+    iOS: "18.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    SUPPORTS_MACCATALYST: NO
+
+targets:
+  AlphaBetaKids:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: App
+      # Content/Resources is deliberately NOT excluded and there is no
+      # `resources:` key here — xcodegen has no such target key (it's silently
+      # ignored) and instead assigns a build phase per file type: .swift goes
+      # to Sources, .json/.ttf go to Copy Bundle Resources, flattened to the
+      # bundle root. That's what puts Alphabet.json where Bundle.main can
+      # find it, and it will pick up the Andika .ttf files the same way.
+      - path: Content
+      - path: Features
+      - path: Audio
+      - path: Theme
+      - path: Support
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.JohnHoedeman.AlphaBetaKids
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: XY62X6K9VH
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        # Portrait only, per SPEC §2. iPad additionally allows upside-down,
+        # which is a normal way to be holding an iPad.
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+        # Filenames here; PostScript names differ — see SPEC §7.2.
+        UIAppFonts:
+          - Andika-Regular.ttf
+          - Andika-Bold.ttf
+        ITSAppUsesNonExemptEncryption: false
+
+  AlphaBetaKidsTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: AlphaBetaKidsTests
+    dependencies:
+      - target: AlphaBetaKids
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  AlphaBetaKids:
+    build:
+      targets:
+        AlphaBetaKids: all
+        AlphaBetaKidsTests: [test]
+    test:
+      targets:
+        - AlphaBetaKidsTests

@@ -1,0 +1,477 @@
+{
+  "version": 1,
+  "cards": [
+    {
+      "id": 1,
+      "kind": "letter",
+      "upper": "A",
+      "lower": "a",
+      "soundHint": "a as in apple",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "apple", "emoji": "🍎" },
+        { "text": "ant", "emoji": "🐜" },
+        { "text": "alligator", "emoji": "🐊" },
+        { "text": "avocado", "emoji": "🥑" }
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "letter",
+      "upper": "B",
+      "lower": "b",
+      "soundHint": "b as in ball",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "bear", "emoji": "🐻" },
+        { "text": "ball", "emoji": "⚽️" },
+        { "text": "bottle", "emoji": "🍼" },
+        { "text": "baby", "emoji": "👶" }
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "letter",
+      "upper": "C",
+      "lower": "c",
+      "soundHint": "c as in cat",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "cat", "emoji": "🐱" },
+        { "text": "cow", "emoji": "🐄" },
+        { "text": "car", "emoji": "🚗" },
+        { "text": "cake", "emoji": "🍰" }
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "letter",
+      "upper": "D",
+      "lower": "d",
+      "soundHint": "d as in dog",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "dog", "emoji": "🐕" },
+        { "text": "dinosaur", "emoji": "🦕" },
+        { "text": "door", "emoji": "🚪" },
+        { "text": "drum", "emoji": "🥁" }
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "letter",
+      "upper": "E",
+      "lower": "e",
+      "soundHint": "e as in egg",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "elephant", "emoji": "🐘" },
+        { "text": "egg", "emoji": "🥚" },
+        { "text": "envelope", "emoji": "✉️" },
+        { "text": "engine", "emoji": "🚂" }
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "letter",
+      "upper": "F",
+      "lower": "f",
+      "soundHint": "f as in fish",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "fish", "emoji": "🐟" },
+        { "text": "frog", "emoji": "🐸" },
+        { "text": "fire", "emoji": "🔥" },
+        { "text": "flower", "emoji": "🌸" }
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "letter",
+      "upper": "G",
+      "lower": "g",
+      "soundHint": "g as in goat",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "goat", "emoji": "🐐" },
+        { "text": "guitar", "emoji": "🎸" },
+        { "text": "grapes", "emoji": "🍇" },
+        { "text": "gift", "emoji": "🎁" }
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "letter",
+      "upper": "H",
+      "lower": "h",
+      "soundHint": "h as in hat",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "hat", "emoji": "👒" },
+        { "text": "horse", "emoji": "🐴" },
+        { "text": "house", "emoji": "🏠" },
+        { "text": "heart", "emoji": "❤️" }
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "letter",
+      "upper": "I",
+      "lower": "i",
+      "soundHint": "i as in insect",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "insect", "emoji": "🐛" },
+        { "text": "iguana", "emoji": "🦎" },
+        { "text": "ink", "emoji": "🖊️" },
+        { "text": "igloo", "emoji": "🛖" }
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "letter",
+      "upper": "J",
+      "lower": "j",
+      "soundHint": "j as in juice",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "juice", "emoji": "🧃" },
+        { "text": "jet", "emoji": "✈️" },
+        { "text": "jacket", "emoji": "🧥" },
+        { "text": "jellyfish", "emoji": "🪼" }
+      ]
+    },
+    {
+      "id": 11,
+      "kind": "letter",
+      "upper": "K",
+      "lower": "k",
+      "soundHint": "k as in key",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "key", "emoji": "🔑" },
+        { "text": "kite", "emoji": "🪁" },
+        { "text": "kangaroo", "emoji": "🦘" },
+        { "text": "koala", "emoji": "🐨" }
+      ]
+    },
+    {
+      "id": 12,
+      "kind": "letter",
+      "upper": "L",
+      "lower": "l",
+      "soundHint": "l as in lion",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "lion", "emoji": "🦁" },
+        { "text": "leaf", "emoji": "🍃" },
+        { "text": "lamp", "emoji": "💡" },
+        { "text": "ladder", "emoji": "🪜" }
+      ]
+    },
+    {
+      "id": 13,
+      "kind": "letter",
+      "upper": "M",
+      "lower": "m",
+      "soundHint": "m as in milk",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "monkey", "emoji": "🐒" },
+        { "text": "milk", "emoji": "🥛" },
+        { "text": "mouse", "emoji": "🐭" },
+        { "text": "mountain", "emoji": "🏔️" }
+      ]
+    },
+    {
+      "id": 14,
+      "kind": "letter",
+      "upper": "N",
+      "lower": "n",
+      "soundHint": "n as in nose",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "nose", "emoji": "👃" },
+        { "text": "nest", "emoji": "🪺" },
+        { "text": "nut", "emoji": "🥜" },
+        { "text": "needle", "emoji": "🪡" }
+      ]
+    },
+    {
+      "id": 15,
+      "kind": "letter",
+      "upper": "O",
+      "lower": "o",
+      "soundHint": "o as in octopus",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "octopus", "emoji": "🐙" },
+        { "text": "orange", "emoji": "🍊" },
+        { "text": "otter", "emoji": "🦦" },
+        { "text": "olive", "emoji": "🫒" }
+      ]
+    },
+    {
+      "id": 16,
+      "kind": "letter",
+      "upper": "P",
+      "lower": "p",
+      "soundHint": "p as in pig",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "pig", "emoji": "🐷" },
+        { "text": "pizza", "emoji": "🍕" },
+        { "text": "penguin", "emoji": "🐧" },
+        { "text": "pencil", "emoji": "✏️" }
+      ]
+    },
+    {
+      "id": 17,
+      "kind": "letter",
+      "upper": "Q",
+      "lower": "q",
+      "soundHint": "qu as in queen",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "queen", "emoji": "👸" },
+        { "text": "question", "emoji": "❓" },
+        { "text": "quiet", "emoji": "🤫" },
+        { "text": "quack", "emoji": "🦆" }
+      ]
+    },
+    {
+      "id": 18,
+      "kind": "letter",
+      "upper": "R",
+      "lower": "r",
+      "soundHint": "r as in rabbit",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "rabbit", "emoji": "🐰" },
+        { "text": "rainbow", "emoji": "🌈" },
+        { "text": "robot", "emoji": "🤖" },
+        { "text": "rocket", "emoji": "🚀" }
+      ]
+    },
+    {
+      "id": 19,
+      "kind": "letter",
+      "upper": "S",
+      "lower": "s",
+      "soundHint": "s as in sun",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "sun", "emoji": "☀️" },
+        { "text": "snake", "emoji": "🐍" },
+        { "text": "star", "emoji": "⭐️" },
+        { "text": "spider", "emoji": "🕷️" }
+      ]
+    },
+    {
+      "id": 20,
+      "kind": "letter",
+      "upper": "T",
+      "lower": "t",
+      "soundHint": "t as in tiger",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "tiger", "emoji": "🐯" },
+        { "text": "truck", "emoji": "🚚" },
+        { "text": "train", "emoji": "🚂" },
+        { "text": "teeth", "emoji": "🦷" }
+      ]
+    },
+    {
+      "id": 21,
+      "kind": "letter",
+      "upper": "U",
+      "lower": "u",
+      "soundHint": "u as in umbrella",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "umbrella", "emoji": "☂️" },
+        { "text": "unicorn", "emoji": "🦄" },
+        { "text": "up", "emoji": "⬆️" },
+        { "text": "underwear", "emoji": "🩲" }
+      ]
+    },
+    {
+      "id": 22,
+      "kind": "letter",
+      "upper": "V",
+      "lower": "v",
+      "soundHint": "v as in violin",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "violin", "emoji": "🎻" },
+        { "text": "van", "emoji": "🚐" },
+        { "text": "volcano", "emoji": "🌋" },
+        { "text": "vegetables", "emoji": "🥕" }
+      ]
+    },
+    {
+      "id": 23,
+      "kind": "letter",
+      "upper": "W",
+      "lower": "w",
+      "soundHint": "w as in water",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "water", "emoji": "💧" },
+        { "text": "watch", "emoji": "⌚️" },
+        { "text": "wolf", "emoji": "🐺" },
+        { "text": "worm", "emoji": "🪱" }
+      ]
+    },
+    {
+      "id": 24,
+      "kind": "letter",
+      "upper": "X",
+      "lower": "x",
+      "soundHint": "x as in box",
+      "wordRule": "contains",
+      "words": [
+        { "text": "box", "emoji": "📦" },
+        { "text": "fox", "emoji": "🦊" },
+        { "text": "six", "emoji": "6️⃣" },
+        { "text": "ox", "emoji": "🐂" }
+      ]
+    },
+    {
+      "id": 25,
+      "kind": "letter",
+      "upper": "Y",
+      "lower": "y",
+      "soundHint": "y as in yo-yo",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "yo-yo", "emoji": "🪀" },
+        { "text": "yellow", "emoji": "💛" },
+        { "text": "yarn", "emoji": "🧶" },
+        { "text": "yawn", "emoji": "🥱" }
+      ]
+    },
+    {
+      "id": 26,
+      "kind": "letter",
+      "upper": "Z",
+      "lower": "z",
+      "soundHint": "z as in zebra",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "zebra", "emoji": "🦓" },
+        { "text": "zero", "emoji": "0️⃣" },
+        { "text": "zip", "emoji": "🤐" },
+        { "text": "zoo", "emoji": "🐘" }
+      ]
+    },
+    {
+      "id": 27,
+      "kind": "blend",
+      "upper": "Sh",
+      "lower": "sh",
+      "soundHint": "sh as in sheep",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "sheep", "emoji": "🐑" },
+        { "text": "ship", "emoji": "🚢" },
+        { "text": "shoe", "emoji": "👟" },
+        { "text": "shark", "emoji": "🦈" }
+      ]
+    },
+    {
+      "id": 28,
+      "kind": "blend",
+      "upper": "Ch",
+      "lower": "ch",
+      "soundHint": "ch as in cheese",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "cheese", "emoji": "🧀" },
+        { "text": "chair", "emoji": "🪑" },
+        { "text": "chicken", "emoji": "🐔" },
+        { "text": "cherry", "emoji": "🍒" }
+      ]
+    },
+    {
+      "id": 29,
+      "kind": "blend",
+      "upper": "Th",
+      "lower": "th",
+      "soundHint": "th as in thumb",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "thumb", "emoji": "👍" },
+        { "text": "three", "emoji": "3️⃣" },
+        { "text": "thunder", "emoji": "⛈️" },
+        { "text": "thread", "emoji": "🧵" }
+      ]
+    },
+    {
+      "id": 30,
+      "kind": "blend",
+      "upper": "Wh",
+      "lower": "wh",
+      "soundHint": "wh as in whale",
+      "wordRule": "startsWith",
+      "words": [
+        { "text": "whale", "emoji": "🐳" },
+        { "text": "wheel", "emoji": "🎡" },
+        { "text": "wheat", "emoji": "🌾" },
+        { "text": "whisper", "emoji": "🤫" }
+      ]
+    },
+    {
+      "id": 31,
+      "kind": "blend",
+      "lower": "ck",
+      "soundHint": "ck as in duck",
+      "wordRule": "contains",
+      "words": [
+        { "text": "duck", "emoji": "🦆" },
+        { "text": "sock", "emoji": "🧦" },
+        { "text": "rock", "emoji": "🪨" },
+        { "text": "clock", "emoji": "🕐" }
+      ]
+    },
+    {
+      "id": 32,
+      "kind": "blend",
+      "lower": "ng",
+      "soundHint": "ng as in ring",
+      "wordRule": "contains",
+      "words": [
+        { "text": "ring", "emoji": "💍" },
+        { "text": "king", "emoji": "👑" },
+        { "text": "wing", "emoji": "🪽" },
+        { "text": "sing", "emoji": "🎤" }
+      ]
+    },
+    {
+      "id": 33,
+      "kind": "blend",
+      "lower": "oo",
+      "soundHint": "oo as in moon",
+      "wordRule": "contains",
+      "words": [
+        { "text": "moon", "emoji": "🌙" },
+        { "text": "spoon", "emoji": "🥄" },
+        { "text": "boot", "emoji": "👢" },
+        { "text": "moose", "emoji": "🫎" }
+      ]
+    },
+    {
+      "id": 34,
+      "kind": "blend",
+      "lower": "ee",
+      "soundHint": "ee as in tree",
+      "wordRule": "contains",
+      "words": [
+        { "text": "tree", "emoji": "🌳" },
+        { "text": "feet", "emoji": "🦶" },
+        { "text": "bee", "emoji": "🐝" },
+        { "text": "sheep", "emoji": "🐑" }
+      ]
+    }
+  ]
+}
