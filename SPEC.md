@@ -454,7 +454,13 @@ entirely until the quiz exists is the clean option — not faking `disabled`.
 
 ## 10. Accessibility
 
-- Dynamic Type throughout. The hero glyph scales but is capped so it cannot overflow.
+- Dynamic Type throughout, with caps chosen per surface because this is a fixed-size
+  card rather than a scroll view. Card front `...accessibility2`; card back
+  `...accessibility1`, since it carries a case row, a label, and four words on one
+  canvas; control bar and position indicator `...accessibility1`.
+  **Every control frame is a minimum, not a fixed size**, so the capsules grow with the
+  type instead of letting their glyphs overflow — verified at AX3, where fixed frames
+  had the `A`/`a` spilling outside their capsule.
 - VoiceOver: the card is one element — "Letter B, capital. Tap to turn over." The back
   reads the opposite case, the label, and the four words.
 - Reduce Motion: cross-fade instead of the 3D flip; no spring on page changes.
@@ -512,7 +518,9 @@ checked in code rather than by eye:
    fallback (§7.2), so this is not a blocker for M1–M2.
 2. **Review Appendix A** — the word and emoji choices, with attention to the flagged
    rows.
-3. **App icon.**
+3. **App icon** — a placeholder ships (white "Aa" in Andika Bold on Hellenic Blue,
+   generated at 1024×1024). Replace whenever you have the real one; it is one PNG at
+   `App/Assets.xcassets/AppIcon.appiconset/AppIcon.png`.
 4. Later: record audio clips (§8) — 34 letter/blend sounds and 136 words.
 
 ---

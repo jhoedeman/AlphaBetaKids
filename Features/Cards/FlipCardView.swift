@@ -54,8 +54,10 @@ struct FlipCardView: View {
         ZStack {
             CardFrontView(card: card, leadingCase: leadingCase)
                 .opacity(isFlipped ? 0 : 1)
+                .accessibilityHidden(isFlipped)
             CardBackView(card: card, leadingCase: leadingCase)
                 .opacity(isFlipped ? 1 : 0)
+                .accessibilityHidden(!isFlipped)
         }
     }
 }
@@ -83,7 +85,11 @@ private struct FaceVisibility: ViewModifier, Animatable {
         // A spring can overshoot past 180°, so this is a threshold rather
         // than an equality check.
         let isFacingViewer = face == .front ? angle < 90 : angle >= 90
-        content.opacity(isFacingViewer ? 1 : 0)
+        content
+            .opacity(isFacingViewer ? 1 : 0)
+            // `opacity(0)` alone leaves the face in the accessibility tree,
+            // so VoiceOver would read both sides of the card.
+            .accessibilityHidden(!isFacingViewer)
     }
 }
 

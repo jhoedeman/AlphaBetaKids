@@ -19,6 +19,12 @@ struct ControlBar: View {
             shuffleButton
         }
         .padding(.horizontal, 16)
+        // Capped so the strip stays a strip. These are parent-facing controls
+        // on a fixed canvas; the card itself — the actual learning content —
+        // scales further. Every frame below is a minimum rather than a fixed
+        // size, so they still grow with type up to this point instead of
+        // letting the glyphs overflow their capsules.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
     }
 
     // MARK: - Case
@@ -44,7 +50,10 @@ struct ControlBar: View {
             Text(glyph)
                 .font(Theme.letterFont(size: 21, relativeTo: .body))
                 .foregroundStyle(isSelected ? Theme.surface : Theme.textSecondary)
-                .frame(width: 38, height: 32)
+                .lineLimit(1)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .frame(minWidth: 38, minHeight: 32)
                 .background(isSelected ? Theme.accent : .clear, in: Capsule())
         }
         .accessibilityLabel(value == .upper ? "Capitals" : "Lowercase")
@@ -61,8 +70,10 @@ struct ControlBar: View {
             Text("Blends")
                 .font(Theme.labelFont(size: 15, relativeTo: .subheadline))
                 .foregroundStyle(blendsEnabled ? Theme.surface : Theme.textSecondary)
+                .lineLimit(1)
                 .padding(.horizontal, 14)
-                .frame(height: 38)
+                .padding(.vertical, 8)
+                .frame(minHeight: 38)
                 .background(blendsEnabled ? Theme.accent : Theme.surface, in: Capsule())
         }
         .accessibilityLabel("Blends")
@@ -77,7 +88,8 @@ struct ControlBar: View {
             Image(systemName: "shuffle")
                 .font(.system(size: 17, weight: .semibold))
                 .foregroundStyle(isShuffled ? Theme.surface : Theme.textSecondary)
-                .frame(width: 44, height: 38)
+                .padding(.horizontal, 12)
+                .frame(minWidth: 44, minHeight: 38)
                 .background(isShuffled ? Theme.accent : Theme.surface, in: Capsule())
         }
         .accessibilityLabel("Shuffle")

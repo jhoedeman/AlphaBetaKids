@@ -61,7 +61,11 @@ struct CardsView: View {
                 Text("\(position.index + 1) / \(cards.count)")
                     .font(Theme.labelFont(size: 15, relativeTo: .subheadline))
                     .foregroundStyle(Theme.textSecondary)
-                    .accessibilityHidden(true)
+                    // Spoken in full rather than hidden — "3 / 26" reads as
+                    // nonsense, but a VoiceOver user still needs to know
+                    // where they are in the deck.
+                    .accessibilityLabel("Card \(position.index + 1) of \(cards.count)")
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             }
             .padding(.vertical, 12)
         }

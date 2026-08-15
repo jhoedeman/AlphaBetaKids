@@ -41,8 +41,14 @@ struct CardBackView: View {
             // the grid.
             .frame(maxHeight: .infinity, alignment: .center)
         }
+        // The back carries far more content than the front, and it has to fit
+        // a fixed-size card. Capping keeps the four words readable instead of
+        // letting one of them push the grid off the card.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityDescription)
+        .accessibilityHint("Tap to turn back")
+        .accessibilityAddTraits(.isButton)
     }
 
     /// The opposite case, large — that's the point of turning the card over —

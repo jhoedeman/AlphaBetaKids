@@ -53,8 +53,16 @@ struct CardPagerView<CardContent: View>: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
+                // Bounded to the card's width plus one arrow either side.
+                // Left to fill the frame, the arrows end up pinned to the
+                // bezels on iPad — 800pt apart and visually unrelated to the
+                // card they act on. On iPhone this exceeds the screen and so
+                // is clamped, leaving the gutters exactly as they were.
                 arrowOverlay
-                    .frame(maxHeight: .infinity)
+                    .frame(
+                        maxWidth: card.width + 2 * (arrowSize + 8),
+                        maxHeight: .infinity
+                    )
 
                 if showRestartIndicator {
                     RestartIndicatorView()

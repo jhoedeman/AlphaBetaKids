@@ -26,9 +26,14 @@ struct CardFrontView: View {
                     .accessibilityHidden(true)
             }
         }
+        // Capped rather than uncapped: this is a fixed-size card, and beyond
+        // this the glyph is already the full height of it. `minimumScaleFactor`
+        // absorbs the rest.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(card.spokenDescription(for: leadingCase))
         .accessibilityHint("Tap to turn over")
+        .accessibilityAddTraits(.isButton)
     }
 }
 
