@@ -46,6 +46,13 @@ Blue hex values are retyped as constants rather than loaded from a `Palettes.jso
 - **Bundle ID:** `com.JohnHoedeman.AlphaBetaKids`. **Deployment target:** iOS 18.0.
 - **Devices:** iPhone and iPad (`TARGETED_DEVICE_FAMILY = "1,2"`), **portrait only**.
   iPhone: `Portrait`. iPad: `Portrait` + `PortraitUpsideDown`.
+  A portrait-only iPad app **must also set `UIRequiresFullScreen`** to opt out of
+  multitasking, or App Store Connect fails the upload with ITMS-90474 (it did, on
+  the first attempt at 1.0 build 1). `xcodebuild` warns about this at archive time
+  — "All interface orientations must be supported unless the app requires full
+  screen" — and that warning is load-bearing, not cosmetic. The key is still
+  honoured by Apple's validator when building against the iOS 26 SDK; verified with
+  `asc xcode validate` on 2026-08-15, not assumed.
 - **UI:** 100% SwiftUI. UIKit only for haptics and the font-availability check.
 - **Dependencies:** none.
 - **Persistence:** `@AppStorage` only. No `ModelContainer`, no iCloud capability, no

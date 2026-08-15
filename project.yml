@@ -53,6 +53,9 @@ targets:
         UISupportedInterfaceOrientations~ipad:
           - UIInterfaceOrientationPortrait
           - UIInterfaceOrientationPortraitUpsideDown
+        # A portrait-only iPad app must opt out of multitasking or Apple
+        # rejects the upload with ITMS-90474 — which it did, on build 1.
+        UIRequiresFullScreen: true
         # Filenames here; PostScript names differ — see SPEC §7.2.
         UIAppFonts:
           - Andika-Regular.ttf
