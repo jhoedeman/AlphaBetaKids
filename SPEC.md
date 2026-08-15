@@ -518,9 +518,14 @@ checked in code rather than by eye:
    fallback (§7.2), so this is not a blocker for M1–M2.
 2. **Review Appendix A** — the word and emoji choices, with attention to the flagged
    rows.
-3. **App icon** — a placeholder ships (white "Aa" in Andika Bold on Hellenic Blue,
-   generated at 1024×1024). Replace whenever you have the real one; it is one PNG at
-   `App/Assets.xcassets/AppIcon.appiconset/AppIcon.png`.
+3. ~~App icon.~~ **Done** — John's artwork ships as light and dark variants
+   (`AppIcon-light.png` / `AppIcon-dark.png`, 1024×1024, no alpha), wired through
+   `AppIcon.appiconset/Contents.json` with the dark one tagged
+   `appearance: luminosity / dark`. Verified in the compiled `Assets.car`: the dark
+   rendition carries `UIAppearanceDark`.
+
+   No **tinted** variant is supplied, so iOS derives one automatically. Add a third
+   entry with `appearance: luminosity, value: tinted` if the derived one looks wrong.
 4. Later: record audio clips (§8) — 34 letter/blend sounds and 136 words.
 
 ---
