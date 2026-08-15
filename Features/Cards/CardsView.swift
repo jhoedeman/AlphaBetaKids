@@ -1,11 +1,20 @@
 import SwiftUI
 
-/// The Cards screen. M3 wires up the pager; M4 replaces the placeholder face
-/// with the real flip card, and M5 adds the control bar above it.
+/// The Cards screen. M5 adds the control bar above the pager and moves
+/// `leadingCase` / blends / shuffle into `@AppStorage`.
 struct CardsView: View {
     let deck: CardDeck
 
     @State private var selectedID = 1
+    /// Which card is currently turned over — at most one, since only one card
+    /// is focused at a time. Keying the flip to an id rather than giving each
+    /// card its own flag is what makes "paging resets the card to its front"
+    /// true by construction: change the selection, clear this, done. A child
+    /// should never arrive on a back they didn't turn (SPEC §6.3).
+    @State private var flippedCardID: Int?
+
+    /// M5 replaces this with the case toggle, stored in `@AppStorage`.
+    private let leadingCase: LetterCase = .upper
 
     private var cards: [LetterCard] {
         // M5 makes this respond to the blends pill and shuffle.
@@ -22,7 +31,13 @@ struct CardsView: View {
 
             VStack(spacing: 8) {
                 CardPagerView(cards: cards, selectedID: $selectedID) { card in
-                    PlaceholderCardFace(card: card)
+                    FlipCardView(
+                        card: card,
+                        leadingCase: leadingCase,
+                        isFlipped: flippedCardID == card.id
+                    ) {
+                        flippedCardID = (flippedCardID == card.id) ? nil : card.id
+                    }
                 }
 
                 Text("\(position.index + 1) / \(cards.count)")
@@ -32,29 +47,9 @@ struct CardsView: View {
             }
             .padding(.vertical, 12)
         }
-    }
-}
-
-/// Stand-in until M4 builds the real front/back faces and the flip. Exists so
-/// the paging feel can be evaluated now rather than after the card work.
-private struct PlaceholderCardFace: View {
-    let card: LetterCard
-
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .fill(Theme.surface)
-                .shadow(color: .black.opacity(0.15), radius: 12, y: 6)
-
-            Text(card.front(leading: .upper))
-                .font(Theme.letterFont(size: 160))
-                .minimumScaleFactor(0.3)
-                .lineLimit(1)
-                .foregroundStyle(Theme.accent)
-                .padding(24)
+        .onChange(of: selectedID) { _, _ in
+            flippedCardID = nil
         }
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(card.front(leading: .upper))
     }
 }
 
