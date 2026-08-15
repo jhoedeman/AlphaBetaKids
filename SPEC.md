@@ -256,8 +256,15 @@ tapping "back" has made a mistake, not a choice.
 
 ### 5.5 Shuffle
 
-- Toggling shuffle **on** reorders the visible deck. Toggling it again **reshuffles**
-  rather than doing nothing.
+- Shuffle is a plain two-state toggle: **on** gives a random order, **off** returns to
+  alphabetical. Every activation produces a *fresh* shuffle rather than restoring the
+  previous one, so off-then-on is how you get a different order.
+
+  (This sentence originally read "toggling it again reshuffles rather than doing
+  nothing", which was ambiguous — it could be read as the second tap reshuffling instead
+  of switching off, leaving no way to get back to alphabetical order. A plain toggle is
+  what "shuffle mode" was chosen to mean. If reshuffle-on-repeat is wanted, it needs a
+  separate affordance for returning to A–Z.)
 - Either direction resets focus to the first card of the new order, un-animated, with a
   light haptic. One predictable rule, rather than "sometimes it keeps your place."
 - Only the *mode* persists, not the order. Launching in shuffle mode produces a fresh
