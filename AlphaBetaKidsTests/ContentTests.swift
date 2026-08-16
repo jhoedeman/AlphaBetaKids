@@ -36,8 +36,9 @@ struct ContentTests {
     // MARK: - SPEC §3.5 rule 1 — every card has four complete words
 
     @Test(arguments: Self.deck.allCards)
-    func hasExactlyFourCompleteWords(card: LetterCard) {
-        #expect(card.words.count == 4, "\(card.lower) has \(card.words.count) words")
+    func hasAPoolOfFourToTenCompleteWords(card: LetterCard) {
+        #expect((4...10).contains(card.words.count),
+                "\(card.lower) has a pool of \(card.words.count)")
         for word in card.words {
             #expect(!word.text.isEmpty, "\(card.lower) has an empty word")
             #expect(!word.emoji.isEmpty, "\(card.lower)/\(word.text) has no emoji")

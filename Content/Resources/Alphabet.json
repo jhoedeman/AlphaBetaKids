@@ -9,10 +9,52 @@
       "soundHint": "a as in apple",
       "wordRule": "startsWith",
       "words": [
-        { "text": "apple", "emoji": "🍎" },
-        { "text": "ant", "emoji": "🐜" },
-        { "text": "alligator", "emoji": "🐊" },
-        { "text": "avocado", "emoji": "🥑" }
+        {
+          "text": "apple",
+          "emoji": "🍎"
+        },
+        {
+          "text": "ant",
+          "emoji": "🐜"
+        },
+        {
+          "text": "alligator",
+          "emoji": "🐊"
+        },
+        {
+          "text": "avocado",
+          "emoji": "🥑"
+        },
+        {
+          "text": "acorn",
+          "emoji": "🌰",
+          "audioFile": null
+        },
+        {
+          "text": "anchor",
+          "emoji": "⚓️",
+          "audioFile": null
+        },
+        {
+          "text": "ambulance",
+          "emoji": "🚑",
+          "audioFile": null
+        },
+        {
+          "text": "angel",
+          "emoji": "👼",
+          "audioFile": null
+        },
+        {
+          "text": "arm",
+          "emoji": "💪",
+          "audioFile": null
+        },
+        {
+          "text": "alarm",
+          "emoji": "⏰",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -23,10 +65,52 @@
       "soundHint": "b as in ball",
       "wordRule": "startsWith",
       "words": [
-        { "text": "bear", "emoji": "🐻" },
-        { "text": "ball", "emoji": "⚽️" },
-        { "text": "bottle", "emoji": "🍼" },
-        { "text": "baby", "emoji": "👶" }
+        {
+          "text": "bear",
+          "emoji": "🐻"
+        },
+        {
+          "text": "ball",
+          "emoji": "⚽️"
+        },
+        {
+          "text": "bottle",
+          "emoji": "🍼"
+        },
+        {
+          "text": "baby",
+          "emoji": "👶"
+        },
+        {
+          "text": "banana",
+          "emoji": "🍌",
+          "audioFile": null
+        },
+        {
+          "text": "bird",
+          "emoji": "🐦",
+          "audioFile": null
+        },
+        {
+          "text": "bus",
+          "emoji": "🚌",
+          "audioFile": null
+        },
+        {
+          "text": "bread",
+          "emoji": "🍞",
+          "audioFile": null
+        },
+        {
+          "text": "butterfly",
+          "emoji": "🦋",
+          "audioFile": null
+        },
+        {
+          "text": "boat",
+          "emoji": "⛵️",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -37,10 +121,52 @@
       "soundHint": "c as in cat",
       "wordRule": "startsWith",
       "words": [
-        { "text": "cat", "emoji": "🐱" },
-        { "text": "cow", "emoji": "🐄" },
-        { "text": "car", "emoji": "🚗" },
-        { "text": "cake", "emoji": "🍰" }
+        {
+          "text": "cat",
+          "emoji": "🐱"
+        },
+        {
+          "text": "cow",
+          "emoji": "🐄"
+        },
+        {
+          "text": "car",
+          "emoji": "🚗"
+        },
+        {
+          "text": "cake",
+          "emoji": "🍰"
+        },
+        {
+          "text": "candle",
+          "emoji": "🕯️",
+          "audioFile": null
+        },
+        {
+          "text": "cloud",
+          "emoji": "☁️",
+          "audioFile": null
+        },
+        {
+          "text": "crab",
+          "emoji": "🦀",
+          "audioFile": null
+        },
+        {
+          "text": "camel",
+          "emoji": "🐫",
+          "audioFile": null
+        },
+        {
+          "text": "corn",
+          "emoji": "🌽",
+          "audioFile": null
+        },
+        {
+          "text": "cup",
+          "emoji": "🥤",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -51,10 +177,52 @@
       "soundHint": "d as in dog",
       "wordRule": "startsWith",
       "words": [
-        { "text": "dog", "emoji": "🐕" },
-        { "text": "dinosaur", "emoji": "🦕" },
-        { "text": "door", "emoji": "🚪" },
-        { "text": "drum", "emoji": "🥁" }
+        {
+          "text": "dog",
+          "emoji": "🐕"
+        },
+        {
+          "text": "dinosaur",
+          "emoji": "🦕"
+        },
+        {
+          "text": "door",
+          "emoji": "🚪"
+        },
+        {
+          "text": "drum",
+          "emoji": "🥁"
+        },
+        {
+          "text": "dolphin",
+          "emoji": "🐬",
+          "audioFile": null
+        },
+        {
+          "text": "donut",
+          "emoji": "🍩",
+          "audioFile": null
+        },
+        {
+          "text": "deer",
+          "emoji": "🦌",
+          "audioFile": null
+        },
+        {
+          "text": "dragon",
+          "emoji": "🐉",
+          "audioFile": null
+        },
+        {
+          "text": "doll",
+          "emoji": "🪆",
+          "audioFile": null
+        },
+        {
+          "text": "diamond",
+          "emoji": "💎",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -65,10 +233,47 @@
       "soundHint": "e as in egg",
       "wordRule": "startsWith",
       "words": [
-        { "text": "elephant", "emoji": "🐘" },
-        { "text": "egg", "emoji": "🥚" },
-        { "text": "envelope", "emoji": "✉️" },
-        { "text": "engine", "emoji": "🚂" }
+        {
+          "text": "elephant",
+          "emoji": "🐘"
+        },
+        {
+          "text": "egg",
+          "emoji": "🥚"
+        },
+        {
+          "text": "envelope",
+          "emoji": "✉️"
+        },
+        {
+          "text": "engine",
+          "emoji": "🚂"
+        },
+        {
+          "text": "ear",
+          "emoji": "👂",
+          "audioFile": null
+        },
+        {
+          "text": "eye",
+          "emoji": "👁️",
+          "audioFile": null
+        },
+        {
+          "text": "eagle",
+          "emoji": "🦅",
+          "audioFile": null
+        },
+        {
+          "text": "earth",
+          "emoji": "🌍",
+          "audioFile": null
+        },
+        {
+          "text": "elf",
+          "emoji": "🧝",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -79,10 +284,52 @@
       "soundHint": "f as in fish",
       "wordRule": "startsWith",
       "words": [
-        { "text": "fish", "emoji": "🐟" },
-        { "text": "frog", "emoji": "🐸" },
-        { "text": "fire", "emoji": "🔥" },
-        { "text": "flower", "emoji": "🌸" }
+        {
+          "text": "fish",
+          "emoji": "🐟"
+        },
+        {
+          "text": "frog",
+          "emoji": "🐸"
+        },
+        {
+          "text": "fire",
+          "emoji": "🔥"
+        },
+        {
+          "text": "flower",
+          "emoji": "🌸"
+        },
+        {
+          "text": "feather",
+          "emoji": "🪶",
+          "audioFile": null
+        },
+        {
+          "text": "fork",
+          "emoji": "🍴",
+          "audioFile": null
+        },
+        {
+          "text": "football",
+          "emoji": "🏈",
+          "audioFile": null
+        },
+        {
+          "text": "fan",
+          "emoji": "🪭",
+          "audioFile": null
+        },
+        {
+          "text": "fries",
+          "emoji": "🍟",
+          "audioFile": null
+        },
+        {
+          "text": "flag",
+          "emoji": "🚩",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -93,10 +340,52 @@
       "soundHint": "g as in goat",
       "wordRule": "startsWith",
       "words": [
-        { "text": "goat", "emoji": "🐐" },
-        { "text": "guitar", "emoji": "🎸" },
-        { "text": "grapes", "emoji": "🍇" },
-        { "text": "gift", "emoji": "🎁" }
+        {
+          "text": "goat",
+          "emoji": "🐐"
+        },
+        {
+          "text": "guitar",
+          "emoji": "🎸"
+        },
+        {
+          "text": "grapes",
+          "emoji": "🍇"
+        },
+        {
+          "text": "gift",
+          "emoji": "🎁"
+        },
+        {
+          "text": "ghost",
+          "emoji": "👻",
+          "audioFile": null
+        },
+        {
+          "text": "glasses",
+          "emoji": "👓",
+          "audioFile": null
+        },
+        {
+          "text": "glove",
+          "emoji": "🧤",
+          "audioFile": null
+        },
+        {
+          "text": "garlic",
+          "emoji": "🧄",
+          "audioFile": null
+        },
+        {
+          "text": "green",
+          "emoji": "💚",
+          "audioFile": null
+        },
+        {
+          "text": "goose",
+          "emoji": "🪿",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -107,10 +396,52 @@
       "soundHint": "h as in hat",
       "wordRule": "startsWith",
       "words": [
-        { "text": "hat", "emoji": "👒" },
-        { "text": "horse", "emoji": "🐴" },
-        { "text": "house", "emoji": "🏠" },
-        { "text": "heart", "emoji": "❤️" }
+        {
+          "text": "hat",
+          "emoji": "👒"
+        },
+        {
+          "text": "horse",
+          "emoji": "🐴"
+        },
+        {
+          "text": "house",
+          "emoji": "🏠"
+        },
+        {
+          "text": "heart",
+          "emoji": "❤️"
+        },
+        {
+          "text": "hand",
+          "emoji": "✋",
+          "audioFile": null
+        },
+        {
+          "text": "hammer",
+          "emoji": "🔨",
+          "audioFile": null
+        },
+        {
+          "text": "honey",
+          "emoji": "🍯",
+          "audioFile": null
+        },
+        {
+          "text": "hedgehog",
+          "emoji": "🦔",
+          "audioFile": null
+        },
+        {
+          "text": "helicopter",
+          "emoji": "🚁",
+          "audioFile": null
+        },
+        {
+          "text": "hippo",
+          "emoji": "🦛",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -121,10 +452,32 @@
       "soundHint": "i as in insect",
       "wordRule": "startsWith",
       "words": [
-        { "text": "insect", "emoji": "🐛" },
-        { "text": "iguana", "emoji": "🦎" },
-        { "text": "ink", "emoji": "🖊️" },
-        { "text": "igloo", "emoji": "🛖" }
+        {
+          "text": "insect",
+          "emoji": "🐛"
+        },
+        {
+          "text": "iguana",
+          "emoji": "🦎"
+        },
+        {
+          "text": "ink",
+          "emoji": "🖊️"
+        },
+        {
+          "text": "igloo",
+          "emoji": "🛖"
+        },
+        {
+          "text": "ice",
+          "emoji": "🧊",
+          "audioFile": null
+        },
+        {
+          "text": "island",
+          "emoji": "🏝️",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -135,10 +488,37 @@
       "soundHint": "j as in juice",
       "wordRule": "startsWith",
       "words": [
-        { "text": "juice", "emoji": "🧃" },
-        { "text": "jet", "emoji": "✈️" },
-        { "text": "jacket", "emoji": "🧥" },
-        { "text": "jellyfish", "emoji": "🪼" }
+        {
+          "text": "juice",
+          "emoji": "🧃"
+        },
+        {
+          "text": "jet",
+          "emoji": "✈️"
+        },
+        {
+          "text": "jacket",
+          "emoji": "🧥"
+        },
+        {
+          "text": "jellyfish",
+          "emoji": "🪼"
+        },
+        {
+          "text": "jar",
+          "emoji": "🫙",
+          "audioFile": null
+        },
+        {
+          "text": "jeans",
+          "emoji": "👖",
+          "audioFile": null
+        },
+        {
+          "text": "jigsaw",
+          "emoji": "🧩",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -149,10 +529,37 @@
       "soundHint": "k as in key",
       "wordRule": "startsWith",
       "words": [
-        { "text": "key", "emoji": "🔑" },
-        { "text": "kite", "emoji": "🪁" },
-        { "text": "kangaroo", "emoji": "🦘" },
-        { "text": "koala", "emoji": "🐨" }
+        {
+          "text": "key",
+          "emoji": "🔑"
+        },
+        {
+          "text": "kite",
+          "emoji": "🪁"
+        },
+        {
+          "text": "kangaroo",
+          "emoji": "🦘"
+        },
+        {
+          "text": "koala",
+          "emoji": "🐨"
+        },
+        {
+          "text": "kitten",
+          "emoji": "🐈",
+          "audioFile": null
+        },
+        {
+          "text": "kiwi",
+          "emoji": "🥝",
+          "audioFile": null
+        },
+        {
+          "text": "keyboard",
+          "emoji": "⌨️",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -163,10 +570,52 @@
       "soundHint": "l as in lion",
       "wordRule": "startsWith",
       "words": [
-        { "text": "lion", "emoji": "🦁" },
-        { "text": "leaf", "emoji": "🍃" },
-        { "text": "lamp", "emoji": "💡" },
-        { "text": "ladder", "emoji": "🪜" }
+        {
+          "text": "lion",
+          "emoji": "🦁"
+        },
+        {
+          "text": "leaf",
+          "emoji": "🍃"
+        },
+        {
+          "text": "lamp",
+          "emoji": "💡"
+        },
+        {
+          "text": "ladder",
+          "emoji": "🪜"
+        },
+        {
+          "text": "lemon",
+          "emoji": "🍋",
+          "audioFile": null
+        },
+        {
+          "text": "leg",
+          "emoji": "🦵",
+          "audioFile": null
+        },
+        {
+          "text": "lock",
+          "emoji": "🔒",
+          "audioFile": null
+        },
+        {
+          "text": "lollipop",
+          "emoji": "🍭",
+          "audioFile": null
+        },
+        {
+          "text": "ladybug",
+          "emoji": "🐞",
+          "audioFile": null
+        },
+        {
+          "text": "llama",
+          "emoji": "🦙",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -177,10 +626,52 @@
       "soundHint": "m as in milk",
       "wordRule": "startsWith",
       "words": [
-        { "text": "monkey", "emoji": "🐒" },
-        { "text": "milk", "emoji": "🥛" },
-        { "text": "mouse", "emoji": "🐭" },
-        { "text": "mountain", "emoji": "🏔️" }
+        {
+          "text": "monkey",
+          "emoji": "🐒"
+        },
+        {
+          "text": "milk",
+          "emoji": "🥛"
+        },
+        {
+          "text": "mouse",
+          "emoji": "🐭"
+        },
+        {
+          "text": "mountain",
+          "emoji": "🏔️"
+        },
+        {
+          "text": "mango",
+          "emoji": "🥭",
+          "audioFile": null
+        },
+        {
+          "text": "magnet",
+          "emoji": "🧲",
+          "audioFile": null
+        },
+        {
+          "text": "mushroom",
+          "emoji": "🍄",
+          "audioFile": null
+        },
+        {
+          "text": "map",
+          "emoji": "🗺️",
+          "audioFile": null
+        },
+        {
+          "text": "muffin",
+          "emoji": "🧁",
+          "audioFile": null
+        },
+        {
+          "text": "melon",
+          "emoji": "🍈",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -191,10 +682,47 @@
       "soundHint": "n as in nose",
       "wordRule": "startsWith",
       "words": [
-        { "text": "nose", "emoji": "👃" },
-        { "text": "nest", "emoji": "🪺" },
-        { "text": "nut", "emoji": "🥜" },
-        { "text": "needle", "emoji": "🪡" }
+        {
+          "text": "nose",
+          "emoji": "👃"
+        },
+        {
+          "text": "nest",
+          "emoji": "🪺"
+        },
+        {
+          "text": "nut",
+          "emoji": "🥜"
+        },
+        {
+          "text": "needle",
+          "emoji": "🪡"
+        },
+        {
+          "text": "newspaper",
+          "emoji": "📰",
+          "audioFile": null
+        },
+        {
+          "text": "night",
+          "emoji": "🌃",
+          "audioFile": null
+        },
+        {
+          "text": "noodles",
+          "emoji": "🍜",
+          "audioFile": null
+        },
+        {
+          "text": "notebook",
+          "emoji": "📓",
+          "audioFile": null
+        },
+        {
+          "text": "necklace",
+          "emoji": "📿",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -205,10 +733,42 @@
       "soundHint": "o as in octopus",
       "wordRule": "startsWith",
       "words": [
-        { "text": "octopus", "emoji": "🐙" },
-        { "text": "orange", "emoji": "🍊" },
-        { "text": "otter", "emoji": "🦦" },
-        { "text": "olive", "emoji": "🫒" }
+        {
+          "text": "octopus",
+          "emoji": "🐙"
+        },
+        {
+          "text": "orange",
+          "emoji": "🍊"
+        },
+        {
+          "text": "otter",
+          "emoji": "🦦"
+        },
+        {
+          "text": "olive",
+          "emoji": "🫒"
+        },
+        {
+          "text": "owl",
+          "emoji": "🦉",
+          "audioFile": null
+        },
+        {
+          "text": "onion",
+          "emoji": "🧅",
+          "audioFile": null
+        },
+        {
+          "text": "oyster",
+          "emoji": "🦪",
+          "audioFile": null
+        },
+        {
+          "text": "ocean",
+          "emoji": "🌊",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -219,10 +779,52 @@
       "soundHint": "p as in pig",
       "wordRule": "startsWith",
       "words": [
-        { "text": "pig", "emoji": "🐷" },
-        { "text": "pizza", "emoji": "🍕" },
-        { "text": "penguin", "emoji": "🐧" },
-        { "text": "pencil", "emoji": "✏️" }
+        {
+          "text": "pig",
+          "emoji": "🐷"
+        },
+        {
+          "text": "pizza",
+          "emoji": "🍕"
+        },
+        {
+          "text": "penguin",
+          "emoji": "🐧"
+        },
+        {
+          "text": "pencil",
+          "emoji": "✏️"
+        },
+        {
+          "text": "pear",
+          "emoji": "🍐",
+          "audioFile": null
+        },
+        {
+          "text": "panda",
+          "emoji": "🐼",
+          "audioFile": null
+        },
+        {
+          "text": "parrot",
+          "emoji": "🦜",
+          "audioFile": null
+        },
+        {
+          "text": "pumpkin",
+          "emoji": "🎃",
+          "audioFile": null
+        },
+        {
+          "text": "popcorn",
+          "emoji": "🍿",
+          "audioFile": null
+        },
+        {
+          "text": "pineapple",
+          "emoji": "🍍",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -233,10 +835,22 @@
       "soundHint": "qu as in queen",
       "wordRule": "startsWith",
       "words": [
-        { "text": "queen", "emoji": "👸" },
-        { "text": "question", "emoji": "❓" },
-        { "text": "quiet", "emoji": "🤫" },
-        { "text": "quack", "emoji": "🦆" }
+        {
+          "text": "queen",
+          "emoji": "👸"
+        },
+        {
+          "text": "question",
+          "emoji": "❓"
+        },
+        {
+          "text": "quiet",
+          "emoji": "🤫"
+        },
+        {
+          "text": "quack",
+          "emoji": "🦆"
+        }
       ]
     },
     {
@@ -247,10 +861,52 @@
       "soundHint": "r as in rabbit",
       "wordRule": "startsWith",
       "words": [
-        { "text": "rabbit", "emoji": "🐰" },
-        { "text": "rainbow", "emoji": "🌈" },
-        { "text": "robot", "emoji": "🤖" },
-        { "text": "rocket", "emoji": "🚀" }
+        {
+          "text": "rabbit",
+          "emoji": "🐰"
+        },
+        {
+          "text": "rainbow",
+          "emoji": "🌈"
+        },
+        {
+          "text": "robot",
+          "emoji": "🤖"
+        },
+        {
+          "text": "rocket",
+          "emoji": "🚀"
+        },
+        {
+          "text": "rain",
+          "emoji": "🌧️",
+          "audioFile": null
+        },
+        {
+          "text": "rose",
+          "emoji": "🌹",
+          "audioFile": null
+        },
+        {
+          "text": "ruler",
+          "emoji": "📏",
+          "audioFile": null
+        },
+        {
+          "text": "radio",
+          "emoji": "📻",
+          "audioFile": null
+        },
+        {
+          "text": "rhino",
+          "emoji": "🦏",
+          "audioFile": null
+        },
+        {
+          "text": "raccoon",
+          "emoji": "🦝",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -261,10 +917,52 @@
       "soundHint": "s as in sun",
       "wordRule": "startsWith",
       "words": [
-        { "text": "sun", "emoji": "☀️" },
-        { "text": "snake", "emoji": "🐍" },
-        { "text": "star", "emoji": "⭐️" },
-        { "text": "spider", "emoji": "🕷️" }
+        {
+          "text": "sun",
+          "emoji": "☀️"
+        },
+        {
+          "text": "snake",
+          "emoji": "🐍"
+        },
+        {
+          "text": "star",
+          "emoji": "⭐️"
+        },
+        {
+          "text": "spider",
+          "emoji": "🕷️"
+        },
+        {
+          "text": "strawberry",
+          "emoji": "🍓",
+          "audioFile": null
+        },
+        {
+          "text": "seal",
+          "emoji": "🦭",
+          "audioFile": null
+        },
+        {
+          "text": "swan",
+          "emoji": "🦢",
+          "audioFile": null
+        },
+        {
+          "text": "sandwich",
+          "emoji": "🥪",
+          "audioFile": null
+        },
+        {
+          "text": "scissors",
+          "emoji": "✂️",
+          "audioFile": null
+        },
+        {
+          "text": "soap",
+          "emoji": "🧼",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -275,10 +973,52 @@
       "soundHint": "t as in tiger",
       "wordRule": "startsWith",
       "words": [
-        { "text": "tiger", "emoji": "🐯" },
-        { "text": "truck", "emoji": "🚚" },
-        { "text": "tent", "emoji": "⛺️" },
-        { "text": "teeth", "emoji": "🦷" }
+        {
+          "text": "tiger",
+          "emoji": "🐯"
+        },
+        {
+          "text": "truck",
+          "emoji": "🚚"
+        },
+        {
+          "text": "tent",
+          "emoji": "⛺️"
+        },
+        {
+          "text": "teeth",
+          "emoji": "🦷"
+        },
+        {
+          "text": "turtle",
+          "emoji": "🐢",
+          "audioFile": null
+        },
+        {
+          "text": "tomato",
+          "emoji": "🍅",
+          "audioFile": null
+        },
+        {
+          "text": "taxi",
+          "emoji": "🚕",
+          "audioFile": null
+        },
+        {
+          "text": "telephone",
+          "emoji": "☎️",
+          "audioFile": null
+        },
+        {
+          "text": "toothbrush",
+          "emoji": "🪥",
+          "audioFile": null
+        },
+        {
+          "text": "turkey",
+          "emoji": "🦃",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -289,10 +1029,22 @@
       "soundHint": "u as in umbrella",
       "wordRule": "startsWith",
       "words": [
-        { "text": "umbrella", "emoji": "☂️" },
-        { "text": "unicorn", "emoji": "🦄" },
-        { "text": "up", "emoji": "⬆️" },
-        { "text": "underwear", "emoji": "🩲" }
+        {
+          "text": "umbrella",
+          "emoji": "☂️"
+        },
+        {
+          "text": "unicorn",
+          "emoji": "🦄"
+        },
+        {
+          "text": "up",
+          "emoji": "⬆️"
+        },
+        {
+          "text": "underwear",
+          "emoji": "🩲"
+        }
       ]
     },
     {
@@ -303,10 +1055,37 @@
       "soundHint": "v as in violin",
       "wordRule": "startsWith",
       "words": [
-        { "text": "violin", "emoji": "🎻" },
-        { "text": "van", "emoji": "🚐" },
-        { "text": "volcano", "emoji": "🌋" },
-        { "text": "vegetables", "emoji": "🥕" }
+        {
+          "text": "violin",
+          "emoji": "🎻"
+        },
+        {
+          "text": "van",
+          "emoji": "🚐"
+        },
+        {
+          "text": "volcano",
+          "emoji": "🌋"
+        },
+        {
+          "text": "vegetables",
+          "emoji": "🥕"
+        },
+        {
+          "text": "vest",
+          "emoji": "🦺",
+          "audioFile": null
+        },
+        {
+          "text": "video",
+          "emoji": "📹",
+          "audioFile": null
+        },
+        {
+          "text": "vampire",
+          "emoji": "🧛",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -317,10 +1096,42 @@
       "soundHint": "w as in water",
       "wordRule": "startsWith",
       "words": [
-        { "text": "water", "emoji": "💧" },
-        { "text": "watch", "emoji": "⌚️" },
-        { "text": "wolf", "emoji": "🐺" },
-        { "text": "worm", "emoji": "🪱" }
+        {
+          "text": "water",
+          "emoji": "💧"
+        },
+        {
+          "text": "watch",
+          "emoji": "⌚️"
+        },
+        {
+          "text": "wolf",
+          "emoji": "🐺"
+        },
+        {
+          "text": "worm",
+          "emoji": "🪱"
+        },
+        {
+          "text": "window",
+          "emoji": "🪟",
+          "audioFile": null
+        },
+        {
+          "text": "wizard",
+          "emoji": "🧙",
+          "audioFile": null
+        },
+        {
+          "text": "watermelon",
+          "emoji": "🍉",
+          "audioFile": null
+        },
+        {
+          "text": "wood",
+          "emoji": "🪵",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -331,10 +1142,22 @@
       "soundHint": "x as in box",
       "wordRule": "contains",
       "words": [
-        { "text": "box", "emoji": "📦" },
-        { "text": "fox", "emoji": "🦊" },
-        { "text": "axe", "emoji": "🪓" },
-        { "text": "ox", "emoji": "🐂" }
+        {
+          "text": "box",
+          "emoji": "📦"
+        },
+        {
+          "text": "fox",
+          "emoji": "🦊"
+        },
+        {
+          "text": "axe",
+          "emoji": "🪓"
+        },
+        {
+          "text": "ox",
+          "emoji": "🐂"
+        }
       ]
     },
     {
@@ -345,10 +1168,27 @@
       "soundHint": "y as in yo-yo",
       "wordRule": "startsWith",
       "words": [
-        { "text": "yo-yo", "emoji": "🪀" },
-        { "text": "yellow", "emoji": "💛" },
-        { "text": "yarn", "emoji": "🧶" },
-        { "text": "yawn", "emoji": "🥱" }
+        {
+          "text": "yo-yo",
+          "emoji": "🪀"
+        },
+        {
+          "text": "yellow",
+          "emoji": "💛"
+        },
+        {
+          "text": "yarn",
+          "emoji": "🧶"
+        },
+        {
+          "text": "yawn",
+          "emoji": "🥱"
+        },
+        {
+          "text": "yacht",
+          "emoji": "🛥️",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -359,10 +1199,22 @@
       "soundHint": "z as in zebra",
       "wordRule": "startsWith",
       "words": [
-        { "text": "zebra", "emoji": "🦓" },
-        { "text": "zero", "emoji": "0️⃣" },
-        { "text": "zip", "emoji": "🤐" },
-        { "text": "zoo", "emoji": "🦒" }
+        {
+          "text": "zebra",
+          "emoji": "🦓"
+        },
+        {
+          "text": "zero",
+          "emoji": "0️⃣"
+        },
+        {
+          "text": "zip",
+          "emoji": "🤐"
+        },
+        {
+          "text": "zoo",
+          "emoji": "🦒"
+        }
       ]
     },
     {
@@ -373,10 +1225,42 @@
       "soundHint": "sh as in sheep",
       "wordRule": "startsWith",
       "words": [
-        { "text": "sheep", "emoji": "🐑" },
-        { "text": "ship", "emoji": "🚢" },
-        { "text": "shoe", "emoji": "👟" },
-        { "text": "shark", "emoji": "🦈" }
+        {
+          "text": "sheep",
+          "emoji": "🐑"
+        },
+        {
+          "text": "ship",
+          "emoji": "🚢"
+        },
+        {
+          "text": "shoe",
+          "emoji": "👟"
+        },
+        {
+          "text": "shark",
+          "emoji": "🦈"
+        },
+        {
+          "text": "shirt",
+          "emoji": "👕",
+          "audioFile": null
+        },
+        {
+          "text": "shell",
+          "emoji": "🐚",
+          "audioFile": null
+        },
+        {
+          "text": "shower",
+          "emoji": "🚿",
+          "audioFile": null
+        },
+        {
+          "text": "shorts",
+          "emoji": "🩳",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -387,10 +1271,37 @@
       "soundHint": "ch as in cheese",
       "wordRule": "startsWith",
       "words": [
-        { "text": "cheese", "emoji": "🧀" },
-        { "text": "chair", "emoji": "🪑" },
-        { "text": "chicken", "emoji": "🐔" },
-        { "text": "cherry", "emoji": "🍒" }
+        {
+          "text": "cheese",
+          "emoji": "🧀"
+        },
+        {
+          "text": "chair",
+          "emoji": "🪑"
+        },
+        {
+          "text": "chicken",
+          "emoji": "🐔"
+        },
+        {
+          "text": "cherry",
+          "emoji": "🍒"
+        },
+        {
+          "text": "chocolate",
+          "emoji": "🍫",
+          "audioFile": null
+        },
+        {
+          "text": "chick",
+          "emoji": "🐤",
+          "audioFile": null
+        },
+        {
+          "text": "child",
+          "emoji": "🧒",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -401,10 +1312,27 @@
       "soundHint": "th as in thumb",
       "wordRule": "startsWith",
       "words": [
-        { "text": "thumb", "emoji": "👍" },
-        { "text": "three", "emoji": "3️⃣" },
-        { "text": "thunder", "emoji": "⛈️" },
-        { "text": "thread", "emoji": "🧵" }
+        {
+          "text": "thumb",
+          "emoji": "👍"
+        },
+        {
+          "text": "three",
+          "emoji": "3️⃣"
+        },
+        {
+          "text": "thunder",
+          "emoji": "⛈️"
+        },
+        {
+          "text": "thread",
+          "emoji": "🧵"
+        },
+        {
+          "text": "thermometer",
+          "emoji": "🌡️",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -415,10 +1343,27 @@
       "soundHint": "wh as in whale",
       "wordRule": "startsWith",
       "words": [
-        { "text": "whale", "emoji": "🐳" },
-        { "text": "wheel", "emoji": "🎡" },
-        { "text": "wheat", "emoji": "🌾" },
-        { "text": "whisper", "emoji": "🤫" }
+        {
+          "text": "whale",
+          "emoji": "🐳"
+        },
+        {
+          "text": "wheel",
+          "emoji": "🎡"
+        },
+        {
+          "text": "wheat",
+          "emoji": "🌾"
+        },
+        {
+          "text": "whisper",
+          "emoji": "🤫"
+        },
+        {
+          "text": "wheelchair",
+          "emoji": "🦽",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -428,10 +1373,27 @@
       "soundHint": "ck as in duck",
       "wordRule": "contains",
       "words": [
-        { "text": "duck", "emoji": "🦆" },
-        { "text": "sock", "emoji": "🧦" },
-        { "text": "rock", "emoji": "🪨" },
-        { "text": "clock", "emoji": "🕐" }
+        {
+          "text": "duck",
+          "emoji": "🦆"
+        },
+        {
+          "text": "sock",
+          "emoji": "🧦"
+        },
+        {
+          "text": "rock",
+          "emoji": "🪨"
+        },
+        {
+          "text": "clock",
+          "emoji": "🕐"
+        },
+        {
+          "text": "backpack",
+          "emoji": "🎒",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -441,10 +1403,27 @@
       "soundHint": "ng as in ring",
       "wordRule": "contains",
       "words": [
-        { "text": "ring", "emoji": "💍" },
-        { "text": "king", "emoji": "👑" },
-        { "text": "wing", "emoji": "🪽" },
-        { "text": "sing", "emoji": "🎤" }
+        {
+          "text": "ring",
+          "emoji": "💍"
+        },
+        {
+          "text": "king",
+          "emoji": "👑"
+        },
+        {
+          "text": "wing",
+          "emoji": "🪽"
+        },
+        {
+          "text": "sing",
+          "emoji": "🎤"
+        },
+        {
+          "text": "tongue",
+          "emoji": "👅",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -454,10 +1433,42 @@
       "soundHint": "oo as in moon",
       "wordRule": "contains",
       "words": [
-        { "text": "moon", "emoji": "🌙" },
-        { "text": "spoon", "emoji": "🥄" },
-        { "text": "boot", "emoji": "👢" },
-        { "text": "moose", "emoji": "🫎" }
+        {
+          "text": "moon",
+          "emoji": "🌙"
+        },
+        {
+          "text": "spoon",
+          "emoji": "🥄"
+        },
+        {
+          "text": "boot",
+          "emoji": "👢"
+        },
+        {
+          "text": "moose",
+          "emoji": "🫎"
+        },
+        {
+          "text": "book",
+          "emoji": "📖",
+          "audioFile": null
+        },
+        {
+          "text": "broom",
+          "emoji": "🧹",
+          "audioFile": null
+        },
+        {
+          "text": "balloon",
+          "emoji": "🎈",
+          "audioFile": null
+        },
+        {
+          "text": "cookie",
+          "emoji": "🍪",
+          "audioFile": null
+        }
       ]
     },
     {
@@ -467,10 +1478,37 @@
       "soundHint": "ee as in tree",
       "wordRule": "contains",
       "words": [
-        { "text": "tree", "emoji": "🌳" },
-        { "text": "feet", "emoji": "🦶" },
-        { "text": "bee", "emoji": "🐝" },
-        { "text": "sheep", "emoji": "🐑" }
+        {
+          "text": "tree",
+          "emoji": "🌳"
+        },
+        {
+          "text": "feet",
+          "emoji": "🦶"
+        },
+        {
+          "text": "bee",
+          "emoji": "🐝"
+        },
+        {
+          "text": "sheep",
+          "emoji": "🐑"
+        },
+        {
+          "text": "sleep",
+          "emoji": "😴",
+          "audioFile": null
+        },
+        {
+          "text": "beetle",
+          "emoji": "🪲",
+          "audioFile": null
+        },
+        {
+          "text": "coffee",
+          "emoji": "☕️",
+          "audioFile": null
+        }
       ]
     }
   ]

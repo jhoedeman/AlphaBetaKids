@@ -135,7 +135,7 @@ A fake "Oo" would teach a form the child will never meet in print, so it is not 
 
 ### 3.5 Content constraints (enforced by test, see §11)
 
-1. Every card has exactly 4 words; every `text` and `emoji` is non-empty.
+1. Every card has a pool of **4 to 10** words; every `text` and `emoji` is non-empty.
 2. Every word actually satisfies its own `wordRule` — `startsWith` words really begin
    with `lower`, `contains` words really contain it. Case-insensitive.
 3. **No letter card's word may begin with a blend that is itself a card.** The `s` card
@@ -144,7 +144,42 @@ A fake "Oo" would teach a form the child will never meet in print, so it is not 
    for the letter, and it is the single easiest content mistake to make.
 4. `id` values are unique; ids 1–26 are `letter`, 27–34 are `blend`.
 
-The full v1.0 draft content is in **Appendix A** and satisfies all four.
+Two further rules bite only at pool scale, where ~260 words compete for pictures:
+
+5. **No emoji is used on two different cards**, so a child never meets the same picture
+   standing for two sounds. Three pairs are exempt because both words genuinely denote
+   the same thing: 🤫 (q/wh), 🦆 (q/ck), 🐑 (sh/ee).
+6. **No word appears on two cards**, exempting "sheep" (sh/ee) for the same reason.
+
+The full content is in **Appendix A**.
+
+### 3.6 Word pools and the display window
+
+Each card carries a pool of up to 10 words and shows **4 at a time**. Four is a layout
+constraint, not a preference — it is what fits at the accessibility-1 Dynamic Type cap
+(§6.2).
+
+**The window slides by 4 on each arrival at the card, and wraps.** For a pool of 10 the
+starts run 0, 4, 8, 2, 6 and then repeat, so the whole pool is seen across five arrivals
+rather than the first four being shown forever with a tail nobody reaches. `shownWords`
+is pure arithmetic on the card, so this is tested directly (§11).
+
+Three properties are deliberate and each is enforced by a test:
+
+- **Visit 0 always shows the first four.** Every session opens on the set the child is
+  consolidating; novelty accumulates within a sitting rather than across days. This is
+  why the pool is an *ordered* list and never shuffled, and why the window count is
+  in-memory rather than `@AppStorage`.
+- **Flipping never changes the words.** The window advances on arrival at a card, not on
+  turning one over. A card that rewrites itself when you turn it twice stops being an
+  object with a back.
+- **Pools of exactly 4 sit still.** x, q, z and u ran out of words a small child knows;
+  those cards must not reorder four words into a different arrangement every visit.
+
+Pool sizes fall well short of 10 for 21 of the 34 cards, which is expected and accepted —
+English has almost nothing pictorial starting with x, and a word the child does not know
+is worse than no word. Adding a picture that no window ever reaches would be worse still,
+because it would look done.
 
 ---
 

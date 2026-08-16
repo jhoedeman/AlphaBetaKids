@@ -8,8 +8,14 @@ import SwiftUI
 struct CardBackView: View {
     let card: LetterCard
     let leadingCase: LetterCase
+    /// How many times this card has been arrived at this session, which picks
+    /// the window into its word pool (SPEC §3.6). Not a flip count — turning
+    /// a card back and forth must not change what is written on it.
+    var visit: Int = 0
 
     @Environment(\.letterAudio) private var audio
+
+    private var words: [Word] { card.shownWords(forVisit: visit) }
 
     private let columns = [
         GridItem(.flexible(), spacing: 12),
@@ -30,7 +36,7 @@ struct CardBackView: View {
                     .minimumScaleFactor(0.8)
 
                 LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(card.words) { word in
+                    ForEach(words) { word in
                         wordCell(word)
                     }
                 }
@@ -118,7 +124,9 @@ struct CardBackView: View {
             parts.append(card.spokenDescription(for: leadingCase.opposite))
         }
         parts.append(card.wordRule.backLabel)
-        parts.append(card.words.map(\.text).joined(separator: ", "))
+        // The words actually on screen, not the whole pool — VoiceOver must
+        // describe the card as it is, not as it could be.
+        parts.append(words.map(\.text).joined(separator: ", "))
         return parts.joined(separator: ". ")
     }
 }

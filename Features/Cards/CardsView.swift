@@ -20,6 +20,17 @@ struct CardsView: View {
     /// card its own flag is what makes "paging resets the card to its front"
     /// true by construction (SPEC §6.3).
     @State private var flippedCardID: Int?
+    /// Arrivals per card id, which picks each card's window into its word pool
+    /// (SPEC §3.6). Deliberately *not* persisted: every session opens on the
+    /// first four words of every card, so the set the child is consolidating
+    /// is the one they meet first, and novelty is what accumulates within a
+    /// sitting.
+    @State private var visits: [Int: Int] = [:]
+    /// Set immediately before the launch restore moves the pager, and cleared
+    /// by the `onChange` that move causes. Without it, restoring to card 5
+    /// counts as leaving card 1 and quietly advances a card the child never
+    /// saw.
+    @State private var isRestoringPosition = false
 
     private var leadingCase: LetterCase {
         LetterCase(rawValue: leadingCaseRaw) ?? .upper
@@ -52,7 +63,8 @@ struct CardsView: View {
                     FlipCardView(
                         card: card,
                         leadingCase: leadingCase,
-                        isFlipped: flippedCardID == card.id
+                        isFlipped: flippedCardID == card.id,
+                        visit: visits[card.id] ?? 0
                     ) {
                         flippedCardID = (flippedCardID == card.id) ? nil : card.id
                     }
@@ -71,8 +83,17 @@ struct CardsView: View {
         }
         .task { buildInitialDeck() }
         .onChange(of: blendsEnabled) { _, _ in rebuildAfterBlendsChange() }
-        .onChange(of: selectedID) { _, newID in
+        .onChange(of: selectedID) { oldID, newID in
             flippedCardID = nil
+            // Counted on departure rather than arrival, so the *next* time the
+            // child comes back to this card it has moved on a set — which is
+            // what "cycles on arrival" means from the card's point of view,
+            // and needs no special case for the card you start on.
+            if isRestoringPosition {
+                isRestoringPosition = false
+            } else {
+                visits[oldID, default: 0] += 1
+            }
             // A position from a shuffled session means nothing in a fresh
             // shuffle, so only alphabetical positions are worth saving.
             if !isShuffled { lastCardID = newID }
@@ -84,7 +105,11 @@ struct CardsView: View {
     private func buildInitialDeck() {
         cards = deck.ordered(blendsEnabled: blendsEnabled, shuffled: isShuffled)
         let restored = isShuffled ? nil : cards.first { $0.id == lastCardID }
-        selectedID = restored?.id ?? cards.first?.id ?? 1
+        let target = restored?.id ?? cards.first?.id ?? 1
+        // Flag before mutating, so the resulting onChange sees it whenever it
+        // runs — the ordering between the two is not ours to rely on.
+        if target != selectedID { isRestoringPosition = true }
+        selectedID = target
     }
 
     /// Keeps focus on the same letter when it survives the filter change, and

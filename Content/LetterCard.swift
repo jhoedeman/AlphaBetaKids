@@ -70,6 +70,28 @@ struct LetterCard: Codable, Hashable, Identifiable {
 
     var hasCasePair: Bool { upper != nil }
 
+    /// How many words the back shows at once. Four is a layout constraint, not
+    /// a preference: it is what fits the card at the accessibility-1 Dynamic
+    /// Type cap (SPEC §6.2).
+    static let shownWordCount = 4
+
+    /// The four words to show, given how many times the child has already
+    /// arrived at this card in this session.
+    ///
+    /// The window slides by four and wraps, so a pool of ten is seen in full
+    /// across five arrivals (starts 0, 4, 8, 2, 6) rather than showing the
+    /// same first four every time with a stale tail nobody reaches. Visit 0
+    /// always returns the first four, which keeps the set the child already
+    /// knows as the one they open on — see SPEC §3.6 on why the pool is
+    /// ordered rather than shuffled.
+    func shownWords(forVisit visit: Int) -> [Word] {
+        guard words.count > Self.shownWordCount, visit > 0 else {
+            return Array(words.prefix(Self.shownWordCount))
+        }
+        let start = (visit * Self.shownWordCount) % words.count
+        return (0..<Self.shownWordCount).map { words[(start + $0) % words.count] }
+    }
+
     /// The glyph on the front. Cards with no capital form always show their
     /// lowercase, whatever the case toggle says.
     func front(leading: LetterCase) -> String {

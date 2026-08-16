@@ -11,6 +11,8 @@ struct FlipCardView: View {
     let card: LetterCard
     let leadingCase: LetterCase
     let isFlipped: Bool
+    /// Passed straight through to the back — see `CardBackView.visit`.
+    var visit: Int = 0
     let onTap: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -41,7 +43,7 @@ struct FlipCardView: View {
             CardFrontView(card: card, leadingCase: leadingCase)
                 .modifier(FaceVisibility(angle: angle, face: .front))
 
-            CardBackView(card: card, leadingCase: leadingCase)
+            CardBackView(card: card, leadingCase: leadingCase, visit: visit)
                 // Pre-rotated so it reads correctly once the container has
                 // turned the card around.
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
@@ -55,7 +57,7 @@ struct FlipCardView: View {
             CardFrontView(card: card, leadingCase: leadingCase)
                 .opacity(isFlipped ? 0 : 1)
                 .accessibilityHidden(isFlipped)
-            CardBackView(card: card, leadingCase: leadingCase)
+            CardBackView(card: card, leadingCase: leadingCase, visit: visit)
                 .opacity(isFlipped ? 1 : 0)
                 .accessibilityHidden(!isFlipped)
         }
