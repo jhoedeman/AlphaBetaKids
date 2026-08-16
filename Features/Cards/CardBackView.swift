@@ -57,6 +57,18 @@ struct CardBackView: View {
     /// form (SPEC §3.4).
     private func caseRow(opposite: String) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 10) {
+            // Mirrors the trailing speaker so the glyphs sit on the card's
+            // centre line, level with the label and the emoji grid below.
+            // Without it the row centres on a width that includes the
+            // speaker and the letters land 18pt to the left — which is
+            // visible, because the two things below them are centred.
+            // Cloning the real button rather than padding by a guessed
+            // width keeps the two sides equal if the icon ever changes,
+            // and keeps them equal once audio makes the speaker visible.
+            speakerButton
+                .hidden()
+                .accessibilityHidden(true)
+
             Text(opposite)
                 .font(Theme.letterFont(size: 62))
                 .foregroundStyle(Theme.accent)

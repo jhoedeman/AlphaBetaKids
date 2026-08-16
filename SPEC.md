@@ -429,6 +429,13 @@ struct SilentAudioPlayer: LetterAudioPlaying {
 Injected via the environment. Speaker buttons are laid out in `CardBackView` but hidden
 while `isAvailable` is false, so adding audio does not reflow the layout.
 
+Reserving that space costs something the first implementation missed: an in-flow speaker
+on one end of the case row shifts the two glyphs off the card's centre line, by 18pt as
+measured on device — visible, because the label and the emoji grid directly beneath *are*
+centred. The row therefore carries a hidden clone of the speaker on its leading edge. Any
+future control added to this row needs the same treatment, or it will pull the letters
+off-centre again.
+
 Recorded clips are strongly preferred over `AVSpeechSynthesizer`, which says "bee" for
 B rather than the /b/ phoneme — the wrong thing for a phonics app to teach.
 
