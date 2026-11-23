@@ -1,5 +1,12 @@
 {
   "version": 1,
+  "soundClasses": [
+    [
+      "c",
+      "k",
+      "q"
+    ]
+  ],
   "cards": [
     {
       "id": 1,
@@ -19,7 +26,8 @@
         },
         {
           "text": "alligator",
-          "emoji": "🐊"
+          "emoji": "🐊",
+          "ambiguousPicture": true
         },
         {
           "text": "avocado",
@@ -28,7 +36,8 @@
         {
           "text": "acorn",
           "emoji": "🌰",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "anchor",
@@ -38,22 +47,26 @@
         {
           "text": "ambulance",
           "emoji": "🚑",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "angel",
           "emoji": "👼",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "arm",
           "emoji": "💪",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "alarm",
           "emoji": "⏰",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -165,7 +178,8 @@
         {
           "text": "cup",
           "emoji": "🥤",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -243,11 +257,13 @@
         },
         {
           "text": "envelope",
-          "emoji": "✉️"
+          "emoji": "✉️",
+          "ambiguousPicture": true
         },
         {
           "text": "engine",
-          "emoji": "🚂"
+          "emoji": "🚂",
+          "ambiguousPicture": true
         },
         {
           "text": "ear",
@@ -262,12 +278,14 @@
         {
           "text": "eagle",
           "emoji": "🦅",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "earth",
           "emoji": "🌍",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "elf",
@@ -308,12 +326,14 @@
         {
           "text": "fork",
           "emoji": "🍴",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "football",
           "emoji": "🏈",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "fan",
@@ -354,7 +374,8 @@
         },
         {
           "text": "gift",
-          "emoji": "🎁"
+          "emoji": "🎁",
+          "ambiguousPicture": true
         },
         {
           "text": "ghost",
@@ -369,7 +390,8 @@
         {
           "text": "glove",
           "emoji": "🧤",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "garlic",
@@ -379,12 +401,14 @@
         {
           "text": "green",
           "emoji": "💚",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "goose",
           "emoji": "🪿",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -425,12 +449,14 @@
         {
           "text": "honey",
           "emoji": "🍯",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "hedgehog",
           "emoji": "🦔",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "helicopter",
@@ -454,19 +480,23 @@
       "words": [
         {
           "text": "insect",
-          "emoji": "🐛"
+          "emoji": "🐛",
+          "ambiguousPicture": true
         },
         {
           "text": "iguana",
-          "emoji": "🦎"
+          "emoji": "🦎",
+          "ambiguousPicture": true
         },
         {
           "text": "ink",
-          "emoji": "🖊️"
+          "emoji": "🖊️",
+          "ambiguousPicture": true
         },
         {
           "text": "igloo",
-          "emoji": "🛖"
+          "emoji": "🛖",
+          "ambiguousPicture": true
         },
         {
           "text": "ice",
@@ -494,11 +524,13 @@
         },
         {
           "text": "jet",
-          "emoji": "✈️"
+          "emoji": "✈️",
+          "ambiguousPicture": true
         },
         {
           "text": "jacket",
-          "emoji": "🧥"
+          "emoji": "🧥",
+          "ambiguousPicture": true
         },
         {
           "text": "jellyfish",
@@ -512,12 +544,14 @@
         {
           "text": "jeans",
           "emoji": "👖",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "jigsaw",
           "emoji": "🧩",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -543,12 +577,14 @@
         },
         {
           "text": "koala",
-          "emoji": "🐨"
+          "emoji": "🐨",
+          "ambiguousPicture": true
         },
         {
           "text": "kitten",
           "emoji": "🐈",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "kiwi",
@@ -604,17 +640,20 @@
         {
           "text": "lollipop",
           "emoji": "🍭",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "ladybug",
           "emoji": "🐞",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "llama",
           "emoji": "🦙",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -665,7 +704,8 @@
         {
           "text": "muffin",
           "emoji": "🧁",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "melon",
@@ -692,36 +732,43 @@
         },
         {
           "text": "nut",
-          "emoji": "🥜"
+          "emoji": "🥜",
+          "ambiguousPicture": true
         },
         {
           "text": "needle",
-          "emoji": "🪡"
+          "emoji": "🪡",
+          "ambiguousPicture": true
         },
         {
           "text": "newspaper",
           "emoji": "📰",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "night",
           "emoji": "🌃",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "noodles",
           "emoji": "🍜",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "notebook",
           "emoji": "📓",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "necklace",
           "emoji": "📿",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -767,7 +814,8 @@
         {
           "text": "ocean",
           "emoji": "🌊",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -841,7 +889,8 @@
         },
         {
           "text": "question",
-          "emoji": "❓"
+          "emoji": "❓",
+          "ambiguousPicture": true
         },
         {
           "text": "quiet",
@@ -849,7 +898,8 @@
         },
         {
           "text": "quack",
-          "emoji": "🦆"
+          "emoji": "🦆",
+          "ambiguousPicture": true
         }
       ]
     },
@@ -885,7 +935,8 @@
         {
           "text": "rose",
           "emoji": "🌹",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "ruler",
@@ -946,7 +997,8 @@
         {
           "text": "swan",
           "emoji": "🦢",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "sandwich",
@@ -1002,12 +1054,14 @@
         {
           "text": "taxi",
           "emoji": "🚕",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "telephone",
           "emoji": "☎️",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "toothbrush",
@@ -1039,7 +1093,8 @@
         },
         {
           "text": "up",
-          "emoji": "⬆️"
+          "emoji": "⬆️",
+          "ambiguousPicture": true
         },
         {
           "text": "underwear",
@@ -1069,17 +1124,20 @@
         },
         {
           "text": "vegetables",
-          "emoji": "🥕"
+          "emoji": "🥕",
+          "ambiguousPicture": true
         },
         {
           "text": "vest",
           "emoji": "🦺",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "video",
           "emoji": "📹",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "vampire",
@@ -1130,7 +1188,8 @@
         {
           "text": "wood",
           "emoji": "🪵",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -1174,11 +1233,13 @@
         },
         {
           "text": "yellow",
-          "emoji": "💛"
+          "emoji": "💛",
+          "ambiguousPicture": true
         },
         {
           "text": "yarn",
-          "emoji": "🧶"
+          "emoji": "🧶",
+          "ambiguousPicture": true
         },
         {
           "text": "yawn",
@@ -1187,7 +1248,8 @@
         {
           "text": "yacht",
           "emoji": "🛥️",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         }
       ]
     },
@@ -1205,15 +1267,18 @@
         },
         {
           "text": "zero",
-          "emoji": "0️⃣"
+          "emoji": "0️⃣",
+          "ambiguousPicture": true
         },
         {
           "text": "zip",
-          "emoji": "🤐"
+          "emoji": "🤐",
+          "ambiguousPicture": true
         },
         {
           "text": "zoo",
-          "emoji": "🦒"
+          "emoji": "🦒",
+          "ambiguousPicture": true
         }
       ]
     },

@@ -134,6 +134,84 @@ struct ContentTests {
         }
     }
 
+    // MARK: - Quiz eligibility (quiz design §5)
+
+    /// The quiz may only draw on letter cards whose rule is `startsWith`.
+    /// Everything else files pictures under a sound they contain rather than
+    /// the letter they begin with — 🌙 lives on `oo` but a child says "moon".
+    @Test func quizCardsAreTheTwentyFiveStartsWithLetters() {
+        let quiz = Self.deck.quizCards
+        #expect(quiz.count == 25)
+        #expect(Set(quiz.map(\.lower)) == Set("abcdefghijklmnopqrstuvwyz".map(String.init)))
+        #expect(!quiz.contains { $0.lower == "x" })
+    }
+
+    /// The property that makes distractors safe without further filtering:
+    /// inside the 25, a word always begins with its own card's letter, so one
+    /// borrowed from another card can never be a correct answer.
+    @Test func everyQuizWordBeginsWithItsOwnCardsLetter() {
+        for card in Self.deck.quizCards {
+            for word in card.words {
+                #expect(word.text.lowercased().hasPrefix(card.lower),
+                        "\(card.lower): '\(word.text)' does not begin with it")
+            }
+        }
+    }
+
+    /// Word-level safety is not picture-level safety. A tile carries no
+    /// caption, so a picture whose obvious name starts elsewhere is a trap.
+    @Test func thePicturePoolIsTheClearPicturesOnly() {
+        let all = Self.deck.quizCards.flatMap(\.words)
+        let flagged = all.filter { !$0.isPictureClear }
+        #expect(all.count == 208, "expected 208 words on the quiz cards")
+        #expect(flagged.count == 58, "expected 58 flagged pictures")
+        #expect(Self.deck.picturePool().count == 150)
+    }
+
+    /// The one that catches a future content edit flagging a card's last
+    /// usable picture — that card would silently stop being able to pose a
+    /// picture-choice question at all.
+    @Test func everyQuizCardKeepsAtLeastOneClearPicture() {
+        for card in Self.deck.quizCards {
+            let clear = card.words.filter(\.isPictureClear)
+            #expect(!clear.isEmpty, "\(card.lower) has no picture that can stand alone")
+        }
+    }
+
+    @Test func flaggedPicturesAreNeverInThePicturePool() {
+        let pooled = Set(Self.deck.picturePool().map(\.word.text))
+        for card in Self.deck.quizCards {
+            for word in card.words where !word.isPictureClear {
+                #expect(!pooled.contains(word.text),
+                        "\(word.text) is flagged but still pooled")
+            }
+        }
+    }
+
+    // MARK: - Sound classes
+
+    /// c, k and q are all /k/ in this content, so they must never be offered
+    /// as each other's wrong answers.
+    @Test func cKAndQShareASoundClass() {
+        #expect(Self.deck.soundClass(for: "c") == ["c", "k", "q"])
+        #expect(Self.deck.soundClass(for: "k") == ["c", "k", "q"])
+        #expect(Self.deck.soundClass(for: "q") == ["c", "k", "q"])
+    }
+
+    @Test func aLetterWithNoSharedSoundIsAloneInItsClass() {
+        #expect(Self.deck.soundClass(for: "b") == ["b"])
+        #expect(Self.deck.soundClass(for: "m") == ["m"])
+    }
+
+    @Test func soundClassesOnlyNameRealCards() {
+        let known = Set(cards.map(\.lower))
+        for group in Self.deck.soundClasses {
+            for letter in group {
+                #expect(known.contains(letter), "sound class names unknown card '\(letter)'")
+            }
+        }
+    }
+
     // MARK: - SPEC §3.4 — cards with no capital form
 
     @Test func exactlyTheExpectedCardsLackACapitalForm() {

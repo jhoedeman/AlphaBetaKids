@@ -50,8 +50,19 @@ struct Word: Codable, Hashable, Identifiable {
     let emoji: String
     /// Reserved for recorded audio (SPEC §8). Absent in v1.
     let audioFile: String?
+    /// Set on pictures a child would plausibly name with a word starting with
+    /// a *different* letter — 🥕 filed as "vegetables" reads as a carrot, 🛖
+    /// filed as "igloo" is a hut. Absent (and so `false`) on most words.
+    let ambiguousPicture: Bool?
 
     var id: String { text }
+
+    /// Whether this picture can stand on its own with nothing naming it.
+    ///
+    /// Only the quiz's picture-choice mode cares: on a card back, and in the
+    /// quiz mode where the parent reads the picture aloud, the word is right
+    /// there and the ambiguity never arises. See the quiz design §5.
+    var isPictureClear: Bool { ambiguousPicture != true }
 }
 
 struct LetterCard: Codable, Hashable, Identifiable {
@@ -111,4 +122,9 @@ struct LetterCard: Codable, Hashable, Identifiable {
 struct AlphabetFile: Codable, Hashable {
     let version: Int
     let cards: [LetterCard]
+    /// Groups of letters that make the same sound in this content, and so must
+    /// never be offered as each other's wrong answers. Currently one group:
+    /// c, k and q are all /k/ here, so a child shown a key who reasons from
+    /// sound to letter and taps C is doing exactly what the cards taught him.
+    let soundClasses: [[String]]?
 }
