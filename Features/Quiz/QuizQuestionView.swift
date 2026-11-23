@@ -106,7 +106,7 @@ struct QuizQuestionView: View {
             // Dimmed, but deliberately still tappable: a wrong answer is not
             // removed, so the child can keep trying and the parent can point
             // at it (quiz design §6.3).
-            .opacity(isRejected ? 0.35 : 1)
+            .opacity(opacity(for: choice))
             .scaleEffect(isAccepted ? 1.06 : 1)
             .modifier(ShakeEffect(shaking: shaking == choice.id && !reduceMotion))
         }
@@ -114,6 +114,18 @@ struct QuizQuestionView: View {
         .accessibilityLabel(choice.spokenLabel(leading: leadingCase))
         // Movement says nothing to VoiceOver, so the state has to be spoken.
         .accessibilityValue(isAccepted ? "Correct" : (isRejected ? "Not this one" : ""))
+    }
+
+    /// A wrong tile stays dim until the question changes. While it is being
+    /// rejected *again* it dips further, which is the Reduce Motion stand-in
+    /// for the shake — the same substitution the card flip makes, a
+    /// cross-fade in place of a movement (SPEC §10).
+    ///
+    /// Without it, Reduce Motion gets no feedback at all on a second tap of
+    /// an already-dim tile: the opacity is already down and nothing moves.
+    private func opacity(for choice: QuizChoice) -> Double {
+        guard rejected.contains(choice.id) else { return 1 }
+        return (reduceMotion && shaking == choice.id) ? 0.12 : 0.35
     }
 
     private func tap(_ choice: QuizChoice) {
@@ -129,12 +141,23 @@ struct QuizQuestionView: View {
             withAnimation(reduceMotion ? .easeInOut(duration: 0.2) : .default) {
                 shaking = choice.id
             }
-            // The shake is one-shot; clear it so a second tap shakes again.
+            // One-shot; cleared so a second tap on the same tile reacts again.
             Task {
                 try? await Task.sleep(for: .milliseconds(400))
-                if shaking == choice.id { shaking = nil }
+                guard shaking == choice.id else { return }
+                withAnimation(.easeInOut(duration: 0.25)) { shaking = nil }
             }
         }
+
+        // Neither a shake nor a colour says anything to VoiceOver, and the
+        // tile's `accessibilityValue` is only re-read if focus happens to be
+        // on it. The result has to be spoken outright.
+        AccessibilityNotification.Announcement(
+            isCorrect
+                ? "Yes. \(choice.spokenLabel(leading: leadingCase))."
+                : "Not \(choice.spokenLabel(leading: leadingCase)). Try again."
+        ).post()
+
         onTap(choice, isCorrect)
     }
 

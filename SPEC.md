@@ -66,6 +66,8 @@ Blue hex values are retyped as constants rather than loaded from a `Palettes.jso
 | `blendsEnabled` | `Bool` | `false` | Blends **off** by default, per requirement |
 | `isShuffled` | `Bool` | `false` | Shuffle *mode*; the order itself is not persisted |
 | `lastCardID` | `Int` | `1` | Restored on launch **only when not shuffled** (§5.5) |
+| `quizMode` | `String` | `"pictureToLetter"` | `pictureToLetter` \| `letterToPicture` \| `mixed` (§9) |
+| `quizLedger` | `String` | `"{}"` | The quiz ledger as one JSON blob (§9). Unreadable JSON decodes to an empty ledger rather than crashing |
 
 ---
 
@@ -208,7 +210,15 @@ AlphaBetaKids/
 │   │   ├── ControlBar.swift      # case toggle, blends pill, shuffle
 │   │   └── RestartIndicatorView.swift
 │   └── Quiz/
-│       └── QuizPlaceholderView.swift
+│       ├── QuizView.swift        # owns the round and the ledger
+│       ├── QuizStartView.swift   # mode picker, Start, ledger reset
+│       ├── QuizQuestionView.swift
+│       ├── QuizFinishView.swift
+│       ├── QuizMode.swift        # QuizMode + QuestionStyle
+│       ├── QuizQuestion.swift    # QuizChoice + QuizQuestion
+│       ├── QuizRound.swift       # ten questions and the outcomes
+│       ├── QuizGenerator.swift   # the scheduler seam (§9.5)
+│       └── QuizLedger.swift
 ├── Audio/
 │   ├── LetterAudioPlaying.swift
 │   └── SilentAudioPlayer.swift
@@ -478,26 +488,100 @@ B rather than the /b/ phoneme — the wrong thing for a phonics app to teach.
 
 ## 9. Quiz tab
 
-The tab is visible, selectable, and lands on a themed "Quiz — Coming soon" screen
-(`QuizPlaceholderView`), which is also where the real implementation will go.
+Ten multiple-choice questions, four tiles each, **driven by the parent**. The parent
+reads every question aloud; the child taps. Nothing on any quiz screen is written for a
+three-year-old to read, and the app never assumes he is holding the device alone. The
+full reasoning is in `design/2026-11-23-quiz-design.md`; this section records what
+shipped.
 
-**Revised during M2.** This section originally specified a *disabled* tab, implemented
-by intercepting the `TabView` selection binding and refusing writes that select Quiz.
-**That does not work, and was verified not to work on the simulator.** Refusing the
-write is a no-op: SwiftUI sees no state change, so it never invalidates the view and
-never reconciles the underlying `UITabBarController` back to Cards. The tab bar keeps
-whatever the user tapped, and the Quiz screen appears.
+### 9.1 The two kinds of question
 
-SwiftUI genuinely has no disabled-tab API — not on the classic `.tabItem` modifier, not
-on the iOS 18 `Tab` type, and `.disabled` on a tab's content does not prevent selection.
-The only ways to make it stick are:
+| Style | Prompt | Tiles | What it tests |
+|---|---|---|---|
+| `pictureToLetter` | a picture | four letters | the parent names it; the child finds the sound's letter |
+| `letterToPicture` | a letter | four pictures | the parent names it; the child finds something starting with it |
 
-- select Quiz and bounce back on the next runloop, which flashes the Quiz screen; or
-- overlay hit-testing hacks on the tab bar, which are fragile and break VoiceOver.
+`QuizMode` adds a third option, **mixed**, which is a *round* setting: each question
+still resolves to one of the two styles. Keeping `QuizMode` and `QuestionStyle` as
+separate types makes "no question is mixed" structural rather than a comment.
 
-Neither is worth it to withhold a screen that is friendlier than a dead control, so the
-"coming soon" screen ships instead. If a truly inert tab is wanted later, hiding the tab
-entirely until the quiz exists is the clean option — not faking `disabled`.
+### 9.2 Which content the quiz may use
+
+Narrower than the card deck, for two independent reasons.
+
+**Only the 25 `startsWith` letter cards.** The word pools encode "this card's *sound*
+occurs in this word", which is not what a letter quiz needs. 🌙 is filed under `oo`, but
+a child says "moon" — offering it as a wrong answer for M would punish a right one.
+Inside the 25, every word begins with its own card's letter, so a word borrowed from
+another card can never also be correct. Blends, the `contains` cards, and `x` are out.
+
+**Only pictures that can stand alone.** A tile carries no caption, so the child names it
+himself: 🥕 filed as "vegetables" is a carrot to him, 🛖 filed as "igloo" is a hut.
+Those carry `"ambiguousPicture": true` in `Alphabet.json` and are excluded from the quiz
+entirely — not as a tile, and not as a prompt either, since a prompt the parent has to
+contradict teaches that pictures cannot be trusted. **59 of 208 flagged; 149 remain.**
+Every one of the 25 keeps at least one, which §11 pins.
+
+**Sound classes.** `Alphabet.json` carries a top-level `soundClasses`, currently
+`[["c","k","q"]]`. Letters in one group are never offered together, because a child
+shown a key who reasons from sound to letter and taps C is doing exactly what the cards
+taught him. The rule applies between *distractors* too, not just against the target.
+
+### 9.3 A round
+
+Ten questions, no letter twice. The child's **first tap** is what counts: a wrong tile
+dims but stays live, so he always reaches the answer eventually and "answered correctly"
+would be worthless. A correct tap turns the tile `success` and the round advances after
+a short hold.
+
+Three outcomes are kept apart, and never conflated: **right first try**, **missed first
+try**, and **skipped**. A skip cannot distinguish "doesn't know it" from "has wandered
+off", so it is scored nowhere and recorded nowhere. **End** stops a round early; the
+questions never reached are counted as such, not as misses.
+
+### 9.4 Screens
+
+- `QuizStartView` — the three modes with a line of explanation each, Start, and the
+  ledger reset (confirmed, placed last, shown only when there is something to clear).
+- `QuizQuestionView` — prompt, the parent's instruction line, a 2×2 grid, ten dots.
+- `QuizFinishView` — first-tap score out of what was *answered*, the letters worth
+  another look, go again or leave. No stars, no streak: the child cannot read a score,
+  and one he can tell is worse than last time is a reason to stop playing.
+- `QuizView` owns the round and the ledger and switches between the three. The **End**
+  and **Skip** controls live in its round bar, because both belong to the round rather
+  than to any one question.
+
+### 9.5 The ledger
+
+`QuizLedger` records, per letter **and** style, how often it was asked, how often it was
+right first try, when it was last seen, and a rolling window of the last 8 outcomes.
+Keyed by both because recognising B and recalling B are different skills, and a
+style-blind record would average them and drill the wrong one.
+
+**Nothing reads it for scheduling yet.** It exists now because the adaptive ordering
+wanted next needs history, and history cannot be backfilled.
+
+`QuizGenerator.round(deck:mode:using:)` is the seam that scheduler replaces. Today it
+picks eligible letters uniformly at random; when the scheduler arrives it will weight
+that by what the ledger says is weak and how long since each letter was seen, and
+nothing outside that one function moves.
+
+### 9.6 What the quiz is not
+
+No adaptive ordering (yet), no blends, no recorded audio, no cumulative progress view,
+no trend reporting. The ledger keeps counters and recency rather than an event log, so a
+months-long trend line is the thing deliberately traded away.
+
+### 9.7 History
+
+This section once specified a *disabled* Quiz tab, implemented by intercepting the
+`TabView` selection binding and refusing writes. **That does not work, and was verified
+not to work on the simulator**: refusing the write is a no-op, so SwiftUI never
+invalidates and never reconciles the underlying `UITabBarController` back. It was then
+revised to a "coming soon" screen. Both are moot — the tab goes somewhere now — but the
+finding is kept because it is not obvious: SwiftUI has no disabled-tab API, on neither
+`.tabItem` nor the iOS 18 `Tab` type, and `.disabled` on a tab's content does not
+prevent selection. Hiding a tab entirely is the clean option; faking `disabled` is not.
 
 ---
 
@@ -512,7 +596,18 @@ entirely until the quiz exists is the clean option — not faking `disabled`.
   had the `A`/`a` spilling outside their capsule.
 - VoiceOver: the card is one element — "Letter B, capital. Tap to turn over." The back
   reads the opposite case, the label, and the four words.
-- Reduce Motion: cross-fade instead of the 3D flip; no spring on page changes.
+- VoiceOver in the quiz: tiles announce their letter or their **word** (a bare emoji
+  reads as a Unicode name or as nothing). Correctness is **announced outright** via
+  `AccessibilityNotification.Announcement`, because a shake and a fill say nothing and a
+  tile's `accessibilityValue` is only re-read if focus happens to be on it. The dots are
+  one element reading "Question 3 of 10". The round bar carries
+  `accessibilitySortPriority(0)` against the question's `1`, so the first thing read is
+  the question rather than "End the round" — the bar is the parent's, the question is
+  the child's.
+- Reduce Motion: cross-fade instead of the 3D flip; no spring on page changes. In the
+  quiz, a wrong tile **shakes** normally and **dips in opacity and back** under Reduce
+  Motion — the same substitution, a cross-fade in place of a movement. Without it a
+  second tap on an already-dim tile would give no feedback at all.
 - Arrow buttons carry explicit labels ("Next letter", "Previous letter", "Back to the
   beginning") rather than relying on the chevron glyph.
 - Contrast: `#1055E8` on `#FFFFFF` is ≈6.0:1. `#3D80FF` on `#152040` is ≈4.4:1 — clear
@@ -529,10 +624,18 @@ checked in code rather than by eye:
 
 **`ContentTests`**
 - Decodes `Alphabet.json`; asserts 34 cards, 26 `letter` + 8 `blend`, unique ids.
-- Every card has exactly 4 words; every `text` and `emoji` non-empty.
+- Every card has a pool of **4 to 10** words (§3.5 rule 1); every `text` and `emoji`
+  non-empty; no word repeated within a card.
 - **Every word satisfies its own `wordRule`** (§3.5 rule 2).
 - **No letter card's word begins with a blend that is also a card** (§3.5 rule 3).
+- No emoji on two cards, bar the three honest exceptions (§3.5 rule 5); no keycap digits
+  bar `zero` and `three`.
 - Exactly `ck`, `ng`, `oo`, `ee` have `upper == nil`.
+- Quiz eligibility (§9.2): the quiz cards are exactly the 25 `startsWith` letters; every
+  one of their words begins with its own letter; 59 pictures flagged and 149 pooled; and
+  **every one of the 25 keeps at least one clear picture** — the test that catches a
+  future content edit flagging a card's last usable one.
+- `soundClasses` names only real cards, and C, K, Q resolve to one group.
 
 **`CardDeckTests`**
 - `visibleCards` returns 26 with blends off, 34 with blends on.
@@ -543,6 +646,43 @@ checked in code rather than by eye:
 **`PagerIndexTests`**
 - Index clamping at both ends; the last index reports `isAtEnd` so the restart button
   appears; the first reports `isAtStart` so the leading chevron is inert.
+
+**`WordWindowTests`**
+- The sliding window over a pool of up to 10 (§3.6): visit 0 is always the first four;
+  the window wraps; a full pool of ten is seen across five arrivals with nothing
+  stranded.
+
+**`QuizGeneratorTests`** — the safety properties, and the reason the engine is value
+types. A quiz that offers a defensible answer and then shakes at the child for picking
+it is worse than no quiz.
+- Ten questions, no letter twice, four choices, no two choices sharing a card.
+- **Every distractor is wrong** — a distractor standing for the target would be a second
+  correct answer.
+- **No flagged picture ever becomes a tile, and none ever becomes a prompt** (§9.2).
+- **C, K and Q never appear together**, including between two distractors.
+- Every one of the 25 can pose a picture-choice question.
+- A seeded generator is reproducible; two seeds differ.
+
+**`QuizRoundTests`**
+- Only the first tap is recorded; later taps on the same question change nothing.
+- A skip advances and scores nothing.
+- The four buckets — right, missed, skipped, never reached — always sum to the round,
+  **including when the round is ended while the current question is answered but not yet
+  stepped past**, which is the case that distinguishes "unreached" from "behind the
+  cursor".
+
+**`QuizLedgerTests`**
+- A skip reaches the ledger nowhere; a mode-A answer does not move mode-B numbers; the
+  recency window rolls at its cap; the whole thing round-trips through JSON unchanged;
+  `clear()` empties it; unreadable JSON yields an empty ledger.
+
+**`ThemeTests` / `ThemeContrastTests`**
+- Every bundled Andika face resolves by **PostScript** name (§7.2) — `Font.custom` falls
+  back silently, so a typo would ship the wrong letterforms looking fine.
+- `success` clears 4.5:1 against its glyph and 3:1 against the surface, in both
+  appearances. Separation from the accent is checked as **hue**, not contrast ratio: a
+  contrast ratio is a luminance comparison, and a green and a blue of similar darkness
+  sit near 1.1:1 while being plainly different to look at.
 
 ---
 
@@ -556,6 +696,7 @@ checked in code rather than by eye:
 | **M4** | `FlipCardView`, `CardFrontView`, `CardBackView`, word grid, flip-reset-on-page. |
 | **M5** | `ControlBar` — case toggle, blends pill, shuffle — and `@AppStorage` wiring. |
 | **M6** | Accessibility pass, Reduce Motion, Dynamic Type, iPad portrait check, app icon. |
+| **Q1–Q6** | The quiz (§9), built after M6 against `design/2026-11-23-quiz-design.md`: content flags and sound classes, the engine, the ledger, the question screen, start and finish, then its own accessibility and spec pass. |
 
 ---
 

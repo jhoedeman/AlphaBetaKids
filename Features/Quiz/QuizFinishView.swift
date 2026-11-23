@@ -67,6 +67,7 @@ struct QuizFinishView: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(spokenScore)
+        .accessibilityAddTraits(.isHeader)
         .padding(.top, 8)
     }
 

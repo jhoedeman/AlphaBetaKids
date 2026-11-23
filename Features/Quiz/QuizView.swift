@@ -64,6 +64,10 @@ struct QuizView: View {
     private func playing(round: QuizRound, question: QuizQuestion) -> some View {
         VStack(spacing: 0) {
             roundBar
+                // Last in the reading order even though it is first on screen.
+                // The round bar is the parent's, the question is the child's,
+                // and VoiceOver should not open on "End the round".
+                .accessibilitySortPriority(0)
             Spacer(minLength: 0)
             QuizQuestionView(
                 question: question,
@@ -76,8 +80,10 @@ struct QuizView: View {
             // in the question view, so the identity has to change with the
             // question or a wrong tile would stay dimmed into the next one.
             .id(question.id)
+            .accessibilitySortPriority(1)
             Spacer(minLength: 0)
         }
+        .accessibilityElement(children: .contain)
     }
 
     /// Both controls that belong to the round rather than the question, in a
