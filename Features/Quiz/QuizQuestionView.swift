@@ -11,7 +11,6 @@ struct QuizQuestionView: View {
     let dotsFilled: Int
     let totalQuestions: Int
     let onTap: (QuizChoice, _ isCorrect: Bool) -> Void
-    let onSkip: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -52,7 +51,6 @@ struct QuizQuestionView: View {
         // The back of a card proved this ceiling for four-up content; the
         // same geometry needs the same cap.
         .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-        .overlay(alignment: .topTrailing) { skipButton }
     }
 
     // MARK: - Prompt
@@ -153,20 +151,6 @@ struct QuizQuestionView: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Question \(min(dotsFilled + 1, totalQuestions)) of \(totalQuestions)")
     }
-
-    /// Present but quiet, like the card front's flip affordance. Without it a
-    /// child who stalls leaves the round unfinishable and the only exit is
-    /// closing the app — the ending the fixed round exists to avoid.
-    private var skipButton: some View {
-        Button(action: onSkip) {
-            Image(systemName: "forward.end")
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(Theme.textSecondary.opacity(0.45))
-                .padding(10)
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel("Skip this question")
-    }
 }
 
 /// A one-shot horizontal wobble.
@@ -194,7 +178,7 @@ private struct ShakeEffect: ViewModifier, Animatable {
         Theme.background.ignoresSafeArea()
         QuizQuestionView(question: round.questions[0], leadingCase: .upper,
                          dotsFilled: 3, totalQuestions: 10,
-                         onTap: { _, _ in }, onSkip: {})
+                         onTap: { _, _ in })
     }
 }
 
@@ -207,6 +191,6 @@ private struct ShakeEffect: ViewModifier, Animatable {
         Theme.background.ignoresSafeArea()
         QuizQuestionView(question: round.questions[0], leadingCase: .upper,
                          dotsFilled: 7, totalQuestions: 10,
-                         onTap: { _, _ in }, onSkip: {})
+                         onTap: { _, _ in })
     }
 }

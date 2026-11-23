@@ -83,6 +83,16 @@ struct QuizRound: Hashable {
         outcomes.values.filter { $0 != .skipped }.count
     }
 
+    /// Questions passed over. The finish screen names these separately: a
+    /// score out of ten would otherwise count a skip as a miss, which is the
+    /// same conflation `skip()` refuses to make in the ledger.
+    var skippedCount: Int {
+        outcomes.values.filter { $0 == .skipped }.count
+    }
+
+    /// Questions never reached, because the round was ended early.
+    var unreachedCount: Int { questions.count - outcomes.count }
+
     /// The cards he missed on the first tap, in the order they were asked —
     /// what the finish screen shows the parent.
     var missedCards: [LetterCard] {

@@ -112,5 +112,68 @@ struct QuizRoundTests {
         #expect(round.isFinished)
         #expect(round.answeredCount == 0)
         #expect(round.missedCards.isEmpty)
+        #expect(round.skippedCount == round.count)
+    }
+
+    // MARK: - What the finish screen reports
+
+    /// The finish screen scores out of what was answered, so the three kinds
+    /// of non-answer have to stay apart: skipped, never reached, and wrong.
+    /// Lumping any two together would show the parent a number that reads as
+    /// "he got these wrong" when he did not.
+    @Test func theThreeKindsOfUnansweredAreCountedSeparately() {
+        var round = Self.freshRound()
+        round.recordFirstTap(correct: true)   // 1 right
+        round.advance()
+        round.recordFirstTap(correct: false)  // 1 wrong
+        round.advance()
+        round.skip()                          // 1 skipped
+        round.skip()                          // 2 skipped
+        // Ended here, with six never reached.
+
+        #expect(round.firstTryCorrectCount == 1)
+        #expect(round.missedCards.count == 1)
+        #expect(round.answeredCount == 2)
+        #expect(round.skippedCount == 2)
+        #expect(round.unreachedCount == round.count - 4)
+        // The invariant the screen leans on: every question is in exactly one
+        // of the four buckets.
+        #expect(round.answeredCount + round.skippedCount + round.unreachedCount == round.count)
+    }
+
+    @Test func aRoundPlayedToTheEndLeavesNothingUnreached() {
+        var round = Self.freshRound()
+        for _ in 0..<round.count {
+            round.recordFirstTap(correct: true)
+            round.advance()
+        }
+        #expect(round.unreachedCount == 0)
+        #expect(round.skippedCount == 0)
+        #expect(round.answeredCount == round.count)
+    }
+
+    /// The case that distinguishes "unreached" from "behind the cursor".
+    ///
+    /// `QuizView` holds on the green tile for a beat before advancing, so
+    /// "End" can land while the current question is answered but not yet
+    /// stepped past. Counting unreached as `count - index` would then count
+    /// that question twice — once as answered, once as unreached — and the
+    /// finish screen's figures would add up to eleven.
+    @Test func endingWhileTheAnsweredQuestionIsStillCurrentCountsItOnce() {
+        var round = Self.freshRound()
+        round.recordFirstTap(correct: true)
+        // No advance: this is mid-pause.
+
+        #expect(round.index == 0)
+        #expect(round.answeredCount == 1)
+        #expect(round.unreachedCount == round.count - 1)
+        #expect(round.answeredCount + round.skippedCount + round.unreachedCount == round.count)
+    }
+
+    @Test func anUntouchedRoundIsEntirelyUnreached() {
+        let round = Self.freshRound()
+        #expect(round.unreachedCount == round.count)
+        #expect(round.answeredCount == 0)
+        #expect(round.skippedCount == 0)
     }
 }

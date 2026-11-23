@@ -44,9 +44,10 @@ struct QuizQuestion: Hashable, Identifiable {
     let target: LetterCard
     /// The picture shown above the choices in `pictureToLetter`.
     ///
-    /// May be a picture flagged `ambiguousPicture` — that flag only bars a
-    /// picture from being an unlabelled *choice*. Here the parent reads the
-    /// word aloud, which is exactly what settles it.
+    /// Never a picture flagged `ambiguousPicture`, even though the parent
+    /// reads the word aloud here: a prompt the parent has to contradict
+    /// ("igloo", over a hut) teaches the child that pictures cannot be
+    /// trusted. Prompts and tiles draw from the same clear pool.
     let promptWord: Word?
     let choices: [QuizChoice]
     let correctIndex: Int
