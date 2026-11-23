@@ -107,7 +107,7 @@ instead of the word: the child who taps it is right and the app shakes at him.
 
 **Resolution: an `ambiguousPicture` flag in the content, excluding that picture from the
 quiz entirely** — as a mode-B correct answer, as a mode-B distractor, and as a mode-A
-prompt. A hand audit of all 208 flagged **58**, leaving **150** usable. The full list is
+prompt. A hand audit of all 208 flagged **58**; play-testing in Phase 5 added a 59th, leaving **149** usable. The full list is
 in Appendix A.
 
 The original resolution kept flagged pictures available as mode-A prompts, on the grounds
@@ -318,9 +318,14 @@ but §11 was missed.
 
 ## Appendix A — pictures flagged `ambiguousPicture`
 
-Excluded from mode B only; still used in mode A, where the parent names them.
+Excluded from the quiz entirely — not a mode-B tile, not a mode-A prompt.
 Judged by hand on 2026-11-23 against the question "what would a three-year-old
 call this, with no word next to it?"
+
+The audit is judgment, so it can miss. 🦪 was added after it came up in play
+during Phase 5: a child names it "shell" or "clam", and S and C are both quiz
+cards, so the obvious answer is one the app would shake at. Anything else found
+the same way belongs in this table rather than in a workaround downstream.
 
 | Card | Picture | Filed as | He'd likely say |
 |---|---|---|---|
@@ -365,6 +370,7 @@ call this, with no word next to it?"
 | n | 📓 | notebook | book |
 | n | 📿 | necklace | beads |
 | o | 🌊 | ocean | water |
+| o | 🦪 | oyster | shell, clam |
 | q | ❓ | question | question mark (not a picture) |
 | q | 🦆 | quack | duck |
 | r | 🌹 | rose | flower |
@@ -383,4 +389,4 @@ call this, with no word next to it?"
 | z | 🤐 | zip | zipper face |
 | z | 🦒 | zoo | giraffe |
 
-**58 of 208 flagged; 150 remain usable in the quiz.**
+**59 of 208 flagged; 149 remain usable in the quiz.**

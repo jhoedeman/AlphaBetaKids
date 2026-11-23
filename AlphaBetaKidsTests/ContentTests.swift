@@ -164,8 +164,8 @@ struct ContentTests {
         let all = Self.deck.quizCards.flatMap(\.words)
         let flagged = all.filter { !$0.isPictureClear }
         #expect(all.count == 208, "expected 208 words on the quiz cards")
-        #expect(flagged.count == 58, "expected 58 flagged pictures")
-        #expect(Self.deck.picturePool().count == 150)
+        #expect(flagged.count == 59, "expected 59 flagged pictures")
+        #expect(Self.deck.picturePool().count == 149)
     }
 
     /// The one that catches a future content edit flagging a card's last

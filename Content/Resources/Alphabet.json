@@ -809,7 +809,8 @@
         {
           "text": "oyster",
           "emoji": "🦪",
-          "audioFile": null
+          "audioFile": null,
+          "ambiguousPicture": true
         },
         {
           "text": "ocean",
