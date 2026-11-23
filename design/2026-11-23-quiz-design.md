@@ -96,7 +96,7 @@ different letter than the word it is filed under:
 |---|---|---|---|
 | C | 🥕 | v / vegetables | carrot |
 | C | 🐈 | k / kitten | cat |
-| B | 🏈 | f / football | ball |
+| B | 🦢 | s / swan | bird |
 | D | 🦆 | q / quack | duck |
 | P | ☎️ | t / telephone | phone |
 | W | 🌊 | o / ocean | water |
@@ -322,16 +322,21 @@ Excluded from the quiz entirely — not a mode-B tile, not a mode-A prompt.
 Judged by hand on 2026-11-23 against the question "what would a three-year-old
 call this, with no word next to it?"
 
-The audit is judgment, so it can miss. 🦪 was added after it came up in play
-during Phase 5: a child names it "shell" or "clam", and S and C are both quiz
-cards, so the obvious answer is one the app would shake at. Anything else found
-the same way belongs in this table rather than in a workaround downstream.
+The audit is judgment, so it misses in both directions. 🦪 was *added* after it
+came up in play during Phase 5: a child names it "shell" or "clam", and S and C
+are both quiz cards, so the obvious answer is one the app would shake at.
+
+Six were *removed* on 2026-11-23 as wrong for an American three-year-old —
+🏈 football, 🐞 ladybug, 🍭 lollipop, 🧥 jacket, 👖 jeans, 🚑 ambulance. Each is
+the thing the emoji depicts and the word a US child actually uses; the original
+flags read them as British ("ball", "bug", "candy", "coat", "trousers"). That
+took `j` from 3 clear pictures to 5, and the audience for this app is American
+(see the owner's note in the project memory).
 
 | Card | Picture | Filed as | He'd likely say |
 |---|---|---|---|
 | a | 🐊 | alligator | crocodile |
 | a | 🌰 | acorn | nut |
-| a | 🚑 | ambulance | truck |
 | a | 👼 | angel | baby |
 | a | 💪 | arm | muscle |
 | a | ⏰ | alarm | clock |
@@ -341,7 +346,6 @@ the same way belongs in this table rather than in a workaround downstream.
 | e | 🦅 | eagle | bird |
 | e | 🌍 | earth | world |
 | f | 🍴 | fork | knife |
-| f | 🏈 | football | ball |
 | g | 🎁 | gift | present |
 | g | 🧤 | glove | mitten |
 | g | 💚 | green | heart |
@@ -353,13 +357,9 @@ the same way belongs in this table rather than in a workaround downstream.
 | i | 🖊️ | ink | pen |
 | i | 🛖 | igloo | hut |
 | j | ✈️ | jet | airplane |
-| j | 🧥 | jacket | coat |
-| j | 👖 | jeans | pants |
 | j | 🧩 | jigsaw | puzzle |
 | k | 🐨 | koala | bear |
 | k | 🐈 | kitten | cat |
-| l | 🍭 | lollipop | candy |
-| l | 🐞 | ladybug | bug |
 | l | 🦙 | llama | alpaca |
 | m | 🧁 | muffin | cupcake |
 | n | 🥜 | nut | peanut |
@@ -389,4 +389,4 @@ the same way belongs in this table rather than in a workaround downstream.
 | z | 🤐 | zip | zipper face |
 | z | 🦒 | zoo | giraffe |
 
-**59 of 209 flagged; 150 remain usable in the quiz.**
+**53 of 209 flagged; 156 remain usable in the quiz.**

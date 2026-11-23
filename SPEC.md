@@ -519,7 +519,7 @@ another card can never also be correct. Blends, the `contains` cards, and `x` ar
 himself: 🥕 filed as "vegetables" is a carrot to him, 🛖 filed as "igloo" is a hut.
 Those carry `"ambiguousPicture": true` in `Alphabet.json` and are excluded from the quiz
 entirely — not as a tile, and not as a prompt either, since a prompt the parent has to
-contradict teaches that pictures cannot be trusted. **59 of 209 flagged; 150 remain.**
+contradict teaches that pictures cannot be trusted. **53 of 209 flagged; 156 remain.**
 Every one of the 25 keeps at least one, which §11 pins.
 
 **Sound classes.** `Alphabet.json` carries a top-level `soundClasses`, currently
@@ -637,7 +637,7 @@ checked in code rather than by eye:
   bar `zero` and `three`.
 - Exactly `ck`, `ng`, `oo`, `ee` have `upper == nil`.
 - Quiz eligibility (§9.2): the quiz cards are exactly the 25 `startsWith` letters; every
-  one of their words begins with its own letter; 59 pictures flagged and 150 pooled; and
+  one of their words begins with its own letter; 53 pictures flagged and 156 pooled; and
   **every one of the 25 keeps at least one clear picture** — the test that catches a
   future content edit flagging a card's last usable one.
 - `soundClasses` names only real cards, and C, K, Q resolve to one group.

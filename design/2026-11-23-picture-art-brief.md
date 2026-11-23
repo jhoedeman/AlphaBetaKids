@@ -20,10 +20,10 @@ Two corollaries worth holding onto while drawing:
 
 ---
 
-## 1. Free wins — no drawing needed
+## 1. Free wins — no drawing needed **(done 2026-11-23)**
 
-These are flagged by my judgment, and I think I got them wrong for an American
-child. Unflagging costs nothing and widens the distractor pool.
+These were flagged by my judgment, and I had them wrong for an American child.
+All six flags are now lifted: **53 of 209 flagged, 156 clear.**
 
 | Card | Picture | Flagged as | Why I now think it's fine |
 |---|---|---|---|
@@ -34,8 +34,8 @@ child. Unflagging costs nothing and widens the distractor pool.
 | j | 👖 jeans | "trousers" | American. No US child says "trousers". |
 | a | 🚑 ambulance | "truck" | Red cross, lights, the word is common from picture books. |
 
-That is **+6 pictures and +2 for `j`** (3 → 5) for the price of editing a
-JSON field. Your call — these are judgment, same as the originals.
+That was **+6 pictures and +2 for `j`** (3 → 5) for the price of editing a
+JSON field. `a` went 4 → 5, `f` 8 → 9, `l` 7 → 9.
 
 ---
 
@@ -160,7 +160,7 @@ problem — he has a different, earlier word for the thing.
 | y | 2 | 5 |
 | z | 1 | 2–3 |
 | q | 2 | 3 |
-| j | 3 | 5 *(no drawing — unflag only)* |
+| j | ~~3~~ **5** | 5 — done, no drawing needed |
 
 Plus roughly eight redraws elsewhere. **Call it 20 drawings for the thin cards
 and 8 for the pool**, and every card clears four except `q` and `z`, which
