@@ -18,6 +18,23 @@ enum Theme {
     static let textPrimary = Color(light: 0x1A_28_45, dark: 0xEE_F2_FD)
     static let textSecondary = Color(light: 0x3D_5A_85, dark: 0x8F_A4_C8)
 
+    /// The one colour outside the Hellenic Blue palette, used for nothing but
+    /// a correct answer in the quiz.
+    ///
+    /// SPEC §7 bans a *palette switcher*, not semantic colour; this is the
+    /// latter. It has to be its own token rather than the accent, because the
+    /// accent is already the colour of the letters themselves — a correct
+    /// tile turning accent-blue would read as emphasis rather than approval.
+    ///
+    /// Both values clear 4.5:1 against the white glyph they carry, and 3:1
+    /// against the surface they sit on, which is stricter than the large-text
+    /// rule their size would allow. Checked by `ThemeTests`, not by eye.
+    static let success = Color(light: 0x0E_7A_43, dark: 0x00_88_58)
+
+    /// What sits on top of `success`. White in both appearances, because the
+    /// token is dark enough in both to carry it.
+    static let onSuccess = Color(light: 0xFF_FF_FF, dark: 0xFF_FF_FF)
+
     // MARK: - Type
 
     /// The three bundled Andika faces, keyed by **PostScript** name.
