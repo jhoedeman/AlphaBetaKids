@@ -95,6 +95,21 @@ struct QuizGeneratorTests {
         }
     }
 
+    /// The prompt in mode A is spoken by the parent, so a flagged picture
+    /// would be *answerable* — but it would make the parent say "igloo" over a
+    /// picture of a hut, teaching the child that the picture cannot be trusted.
+    /// Both modes draw prompts and tiles from the same clear pool.
+    @Test func noFlaggedPictureEverBecomesAPrompt() {
+        var prompts = 0
+        for question in Self.allQuestions {
+            guard let prompt = question.promptWord else { continue }
+            prompts += 1
+            #expect(prompt.isPictureClear,
+                    "\(question.target.lower) was prompted with flagged '\(prompt.text)'")
+        }
+        #expect(prompts > 0, "no mode-A questions were generated, so nothing was checked")
+    }
+
     /// c, k and q are all /k/ in this content, so offering two of them in one
     /// question punishes a child for reasoning from sound to letter.
     @Test func lettersSharingASoundNeverAppearTogether() {

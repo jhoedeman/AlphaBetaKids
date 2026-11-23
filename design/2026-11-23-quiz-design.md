@@ -105,10 +105,17 @@ Mode A is immune — the parent says "this is a carrot" and the question is sett
 has nothing naming the tiles, so this is §5's own worse case reached through the picture
 instead of the word: the child who taps it is right and the app shakes at him.
 
-**Resolution: an `ambiguousPicture` flag in the content, excluding that picture from mode
-B** (both as a correct answer and as a distractor). It stays available in mode A, where
-the parent's voice disambiguates it. A hand audit of all 208 flagged **58**, leaving
-**150** usable in mode B. The full list is in Appendix A.
+**Resolution: an `ambiguousPicture` flag in the content, excluding that picture from the
+quiz entirely** — as a mode-B correct answer, as a mode-B distractor, and as a mode-A
+prompt. A hand audit of all 208 flagged **58**, leaving **150** usable. The full list is
+in Appendix A.
+
+The original resolution kept flagged pictures available as mode-A prompts, on the grounds
+that the parent's voice disambiguates them. Seeing it run (Phase 4) changed the call: it
+is answerable, but it works by asking the parent to say "igloo" over a picture of a hut,
+which teaches the child that the picture cannot be trusted. That is the one thing a
+picture in this app must not be. With 150 clear pictures the stricter rule costs nothing,
+and both modes now draw from one pool.
 
 The cost is smaller than it looks, because a card needs only **one** unambiguous picture
 to serve as a correct answer — the three distractors come from the global pool of 150.
@@ -281,8 +288,9 @@ Following SPEC §11, the valuable tests are the ones that do not need a view:
 - Ledger: first tap is what gets recorded; later taps on the same question do not; the
   recency window rolls and does not grow.
 - Round-in-progress arithmetic — position, dots filled, when the round is over.
-- **No flagged picture ever appears in mode B**, as correct answer or distractor — the
-  test that stops the §5 picture trap from reappearing.
+- **No flagged picture ever appears anywhere in the quiz** — not as a mode-B correct
+  answer, not as a mode-B distractor, not as a mode-A prompt. Two tests, one for tiles and
+  one for prompts; together they stop the §5 picture trap from reappearing.
 - **C, K and Q never co-occur** in one question's choices.
 - A skipped question leaves the ledger untouched.
 - Ledger entries are keyed by letter *and* mode; a mode-A answer does not move mode-B
@@ -375,4 +383,4 @@ call this, with no word next to it?"
 | z | 🤐 | zip | zipper face |
 | z | 🦒 | zoo | giraffe |
 
-**58 of 208 flagged; 150 remain usable in mode B.**
+**58 of 208 flagged; 150 remain usable in the quiz.**

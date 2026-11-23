@@ -58,9 +58,16 @@ enum QuizGenerator {
 
         switch style {
         case .pictureToLetter:
-            // The prompt may be any of the target's pictures, flagged or not:
-            // the parent says the word aloud, which settles it.
-            guard let prompt = target.words.randomElement(using: &generator) else { return nil }
+            // The parent says the word aloud here, so a flagged picture would
+            // still *work* — but it would work by contradicting itself. Saying
+            // "igloo" over a picture of a hut teaches the child that the
+            // picture is unreliable, which is the one thing a picture in this
+            // app must not be. There are 150 clear pictures, so the stricter
+            // rule costs nothing and both modes now draw from the same pool.
+            guard let prompt = target.words
+                .filter(\.isPictureClear)
+                .randomElement(using: &generator)
+            else { return nil }
 
             var distractors: [QuizChoice] = []
             for candidate in deck.quizCards.shuffled(using: &generator) {
