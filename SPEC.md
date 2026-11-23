@@ -519,7 +519,7 @@ another card can never also be correct. Blends, the `contains` cards, and `x` ar
 himself: 🥕 filed as "vegetables" is a carrot to him, 🛖 filed as "igloo" is a hut.
 Those carry `"ambiguousPicture": true` in `Alphabet.json` and are excluded from the quiz
 entirely — not as a tile, and not as a prompt either, since a prompt the parent has to
-contradict teaches that pictures cannot be trusted. **59 of 208 flagged; 149 remain.**
+contradict teaches that pictures cannot be trusted. **59 of 209 flagged; 150 remain.**
 Every one of the 25 keeps at least one, which §11 pins.
 
 **Sound classes.** `Alphabet.json` carries a top-level `soundClasses`, currently
@@ -529,7 +529,12 @@ taught him. The rule applies between *distractors* too, not just against the tar
 
 ### 9.3 A round
 
-Ten questions, no letter twice. The child's **first tap** is what counts: a wrong tile
+Ten questions, no letter twice. Targets are drawn **weighted by how many clear pictures
+the card has**, capped at four: `z` has one usable picture and so shows the same zebra
+every time it is asked about, and comes up about a quarter as often as a card with a
+full pool. It is never silenced — a letter the quiz skips is worse than one it covers
+repetitively. This is the crudest possible scheduler, looking at the content rather than
+at the child; §9.5 is where the other half goes. The child's **first tap** is what counts: a wrong tile
 dims but stays live, so he always reaches the answer eventually and "answered correctly"
 would be worthless. A correct tap turns the tile `success` and the round advances after
 a short hold.
@@ -632,7 +637,7 @@ checked in code rather than by eye:
   bar `zero` and `three`.
 - Exactly `ck`, `ng`, `oo`, `ee` have `upper == nil`.
 - Quiz eligibility (§9.2): the quiz cards are exactly the 25 `startsWith` letters; every
-  one of their words begins with its own letter; 59 pictures flagged and 149 pooled; and
+  one of their words begins with its own letter; 59 pictures flagged and 150 pooled; and
   **every one of the 25 keeps at least one clear picture** — the test that catches a
   future content edit flagging a card's last usable one.
 - `soundClasses` names only real cards, and C, K, Q resolve to one group.
@@ -662,6 +667,9 @@ it is worse than no quiz.
 - **C, K and Q never appear together**, including between two distractors.
 - Every one of the 25 can pose a picture-choice question.
 - A seeded generator is reproducible; two seeds differ.
+- Weighting: `weight(for:)` is the clear-picture count up to the cap; across 300 seeded
+  rounds a one-picture card appears less than half as often as a full one, **and every
+  one of the 25 still appears**.
 
 **`QuizRoundTests`**
 - Only the first tap is recorded; later taps on the same question change nothing.

@@ -173,6 +173,46 @@ struct QuizGeneratorTests {
         }
     }
 
+    // MARK: - Weighting
+
+    /// The weight is the card's clear-picture count, capped.
+    @Test func weightIsTheClearPictureCountUpToTheCap() {
+        func card(_ letter: String) -> LetterCard {
+            Self.deck.quizCards.first { $0.lower == letter }!
+        }
+        #expect(QuizGenerator.weight(for: card("z")) == 1)   // zebra alone
+        #expect(QuizGenerator.weight(for: card("q")) == 2)   // queen, quiet
+        #expect(QuizGenerator.weight(for: card("i")) == 3)   // ice, island, ice cream
+        #expect(QuizGenerator.weight(for: card("c")) == QuizGenerator.maxWeight)
+        #expect(QuizGenerator.weight(for: card("s")) == QuizGenerator.maxWeight)
+    }
+
+    /// The point of the weighting: a card with one usable picture shows that
+    /// same picture every time it is asked about, so it should come up less
+    /// than a card with a full pool.
+    @Test func thinCardsComeUpLessOftenThanFullOnes() {
+        var counts: [String: Int] = [:]
+        for round in Self.rounds(.mixed, seeds: 0..<300) {
+            for question in round.questions {
+                counts[question.target.lower, default: 0] += 1
+            }
+        }
+        let z = counts["z"] ?? 0          // weight 1
+        let full = counts["c"] ?? 0       // weight 4
+        #expect(z < full / 2, "z appeared \(z) times, c \(full) — not thinned")
+    }
+
+    /// But never silenced. A letter the quiz skips entirely is worse than one
+    /// it covers repetitively.
+    @Test func everyQuizCardStillAppearsSometimes() {
+        var seen: Set<String> = []
+        for round in Self.rounds(.mixed, seeds: 0..<300) {
+            for question in round.questions { seen.insert(question.target.lower) }
+        }
+        let missing = Set(Self.deck.quizCards.map(\.lower)).subtracting(seen)
+        #expect(missing.isEmpty, "never asked about: \(missing.sorted())")
+    }
+
     // MARK: - Reproducibility
 
     @Test func theSameSeedGivesTheSameRound() {

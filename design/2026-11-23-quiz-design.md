@@ -389,4 +389,4 @@ the same way belongs in this table rather than in a workaround downstream.
 | z | 🤐 | zip | zipper face |
 | z | 🦒 | zoo | giraffe |
 
-**59 of 208 flagged; 149 remain usable in the quiz.**
+**59 of 209 flagged; 150 remain usable in the quiz.**

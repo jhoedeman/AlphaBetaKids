@@ -12,25 +12,69 @@ enum QuizGenerator {
     static let questionsPerRound = 10
     static let choicesPerQuestion = 4
 
+    /// The most a card's picture count can count for when choosing targets.
+    /// Above this, more pictures stop buying more turns — the point is to
+    /// thin out the letters that repeat themselves, not to crown the letters
+    /// with the fullest pools.
+    static let maxWeight = 4
+
+    /// How often this card should come up, relative to the others.
+    ///
+    /// A card with one usable picture shows that same picture every time it
+    /// is asked about — `z` is a zebra, always, in both styles. Weighting by
+    /// how many clear pictures a card has makes that happen a quarter as
+    /// often as a card with four or more, without ever making `z` unaskable.
+    /// Silencing it would be worse: a letter the quiz never covers is not an
+    /// improvement on a letter it covers repetitively.
+    ///
+    /// **This is the crudest possible version of the scheduler** (quiz design
+    /// §6.5) — it looks at the content and not at the child. When the ledger
+    /// is read, this is the function that grows a second half.
+    static func weight(for card: LetterCard) -> Int {
+        min(card.words.filter(\.isPictureClear).count, maxWeight)
+    }
+
     static func round<G: RandomNumberGenerator>(
         deck: CardDeck,
         mode: QuizMode,
         using generator: inout G
     ) -> QuizRound {
-        let targets = deck.quizCards
-            .shuffled(using: &generator)
-            .prefix(questionsPerRound)
+        // Chosen one at a time, without replacement, so no letter repeats
+        // inside a round while the weighting still applies to each pick.
+        var remaining = deck.quizCards
+        var questions: [QuizQuestion] = []
 
-        let questions = targets.enumerated().compactMap { position, target in
-            question(
-                id: position,
-                target: target,
-                style: mode.resolve(using: &generator),
-                deck: deck,
-                using: &generator
-            )
+        while questions.count < questionsPerRound, !remaining.isEmpty {
+            let style = mode.resolve(using: &generator)
+            guard let target = pickTarget(from: remaining, using: &generator) else { break }
+            remaining.removeAll { $0.id == target.id }
+
+            // The id is the question's position in the round, so it is taken
+            // from what has been built rather than from how many cards have
+            // been tried — a card that cannot pose this kind of question
+            // leaves no gap in the numbering.
+            if let question = question(id: questions.count, target: target,
+                                       style: style, deck: deck, using: &generator) {
+                questions.append(question)
+            }
         }
         return QuizRound(questions: questions)
+    }
+
+    private static func pickTarget<G: RandomNumberGenerator>(
+        from candidates: [LetterCard],
+        using generator: inout G
+    ) -> LetterCard? {
+        let weights = candidates.map(weight(for:))
+        let total = weights.reduce(0, +)
+        guard total > 0 else { return candidates.randomElement(using: &generator) }
+
+        var roll = Int.random(in: 0..<total, using: &generator)
+        for (card, weight) in zip(candidates, weights) {
+            roll -= weight
+            if roll < 0 { return card }
+        }
+        return candidates.last
     }
 
     static func round(deck: CardDeck, mode: QuizMode) -> QuizRound {
