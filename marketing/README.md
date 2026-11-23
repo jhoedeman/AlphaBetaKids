@@ -15,12 +15,28 @@ shots, in upload order:
 4. `iphone-4-quiz-picture-to-letter.png` — picture prompt, letter tiles
 5. `iphone-5-quiz-letter-to-picture.png` — letter prompt, picture tiles
 
-**iPad — 13" slot, 2064 × 2752. Not captured.** The app currently draws its
-chrome twice on iPad: the tab bar and the control bar appear again as a short
-strip at the bottom of the screen, as though a second copy of the window were
-laid out in ~340pt and parked there. Reproduced on iPad Pro 13-inch under both
-iOS 18.4 and iOS 26.2, on both tabs, surviving relaunch and rotation; the
-duplicate is inert (taps do not reach it). Not reproducible on any iPhone.
-The source has exactly one `ControlBar`, so this is not a duplicated view in
-`CardsView`. Fix it before taking iPad shots — a reviewer opening the app on an
-iPad would see the same thing.
+**iPad — 13" slot, 2064 × 2752.** Captured on iPad Pro 13-inch (M5), iOS 26.2,
+same five screens in the same order:
+
+1. `ipad-1-card-front.png`
+2. `ipad-2-card-back.png`
+3. `ipad-3-quiz-start.png`
+4. `ipad-4-quiz-picture-to-letter.png`
+5. `ipad-5-quiz-letter-to-picture.png`
+
+## A rendering trap, recorded so nobody chases it twice
+
+Downscaled previews of these iPad captures appear to show the tab bar and the
+control bar **a second time** near the bottom of the screen. There is no such
+duplicate. It is an artifact of the preview scaling, not of the app.
+
+Established by decoding the PNGs: on a 2752px-tall capture, rows 2150–2620
+(the band where the phantom chrome appears) are **pure background**, maximum
+per-row deviation 0. Independently, walking the app's UIKit view tree and its
+CALayer tree at runtime on iPad finds nothing below the card except the
+position indicator. Do not trust a scaled-down look at an iPad screenshot;
+decode the file.
+
+Note also that SwiftUI batches drawing into large layers, so filtering a layer
+walk by frame position will not localize SwiftUI-drawn content — a full-screen
+drawing layer has `minY == 0` however far down its contents are painted.
