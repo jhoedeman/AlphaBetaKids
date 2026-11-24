@@ -85,7 +85,7 @@ struct CardDeck: Hashable {
     /// Word-level safety is not picture-level safety: a tile carries no
     /// caption, so the child names it himself, and 🥕 filed as "vegetables"
     /// is a carrot to him. Those are flagged in the content and dropped here.
-    /// 150 of the 208 words on `quizCards` survive, and every one of the 25
+    /// 156 of the 209 words on `quizCards` survive, and every one of the 25
     /// keeps at least one — which `ContentTests` pins.
     func picturePool() -> [(card: LetterCard, word: Word)] {
         quizCards.flatMap { card in
