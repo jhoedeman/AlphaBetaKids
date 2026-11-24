@@ -2,9 +2,11 @@
 
 Drafts for the 1.0 listing, written 2026-11-23 when the quiz shipped.
 
-**Sections 1 and 2 were applied to App Store Connect on 2026-11-23** and read
-back byte-for-byte identical to the text below. Section 3 is a draft only — the
-live privacy page still lists four stored settings instead of six.
+**All three sections were applied on 2026-11-23.** Sections 1 and 2 went to
+App Store Connect and read back byte-for-byte identical to the text below.
+Section 3 was applied to `docs/index.html`; the effective date moved from
+15 August to 23 November 2026, as that page's own "Changes to this policy"
+section promises.
 
 App `6801923268` · version `1.0` (`68fd668c-a39b-419c-a627-13ac3d858387`) ·
 en-US localization `154c8e4d-63ef-4904-973b-d07c68f90aac`.
@@ -96,7 +98,7 @@ Both are single `asc` calls against the en-US localization once approved:
 
 ---
 
-## 3. Privacy policy — needs a patch the quiz made necessary
+## 3. Privacy policy — the patch the quiz made necessary **(applied)**
 
 Not App Store text, but it is the one piece of listing-adjacent writing the
 quiz invalidated, and it matters more than the other two because a children's
@@ -121,7 +123,7 @@ there is no `openURL`, `Link(`, `UIApplication.shared.open` or `SFSafari`
 anywhere in the app, so "does not link out to a website, store, or any other
 app" is still true.
 
-### Suggested replacement for lines 88–97
+### Replacement for lines 88–97, as applied
 
 ```html
 <p>The app remembers a few things so it picks up where you left off:</p>
@@ -144,8 +146,8 @@ is personal information, none of it is transmitted anywhere, and all of it is
 deleted along with the app if you remove it.</p>
 ```
 
-The effective date on line 75 would move from **15 August 2026** to the day
-this is published.
+The effective date on line 75 moved from **15 August 2026** to
+**23 November 2026**.
 
 **This does not affect App Privacy answers in App Store Connect.** Those ask
 what you *collect*, and the answer is still nothing — data that never leaves
