@@ -1,8 +1,10 @@
 # App Store text
 
-Drafts for the 1.0 listing, written 2026-11-23 when the quiz shipped. Nothing
-here is applied until it is approved — the live values in App Store Connect
-still describe the cards tab alone.
+Drafts for the 1.0 listing, written 2026-11-23 when the quiz shipped.
+
+**Sections 1 and 2 were applied to App Store Connect on 2026-11-23** and read
+back byte-for-byte identical to the text below. Section 3 is a draft only — the
+live privacy page still lists four stored settings instead of six.
 
 App `6801923268` · version `1.0` (`68fd668c-a39b-419c-a627-13ac3d858387`) ·
 en-US localization `154c8e4d-63ef-4904-973b-d07c68f90aac`.
@@ -91,3 +93,61 @@ Both are single `asc` calls against the en-US localization once approved:
 
 - description → `asc localizations update`
 - review notes → `asc review details-update`
+
+---
+
+## 3. Privacy policy — needs a patch the quiz made necessary
+
+Not App Store text, but it is the one piece of listing-adjacent writing the
+quiz invalidated, and it matters more than the other two because a children's
+privacy policy that enumerates what the app stores has to enumerate it
+*correctly*.
+
+`docs/index.html` says **"The app remembers four settings"** and lists four.
+The app now persists **six** `@AppStorage` keys. The two it does not mention:
+
+| Key | What it holds |
+|---|---|
+| `quizMode` | which of the three question styles was last chosen |
+| `quizLedger` | a per-letter, per-style record of which quiz questions were answered correctly |
+
+`quizMode` is a preference like the other four. **`quizLedger` is not** — it is
+a record of how the child performed, which is a different kind of thing from
+"which card you were last looking at", even though it never leaves the device
+and contains no name, identifier, or timestamp.
+
+Everything else in the policy still holds, and I checked rather than assumed:
+there is no `openURL`, `Link(`, `UIApplication.shared.open` or `SFSafari`
+anywhere in the app, so "does not link out to a website, store, or any other
+app" is still true.
+
+### Suggested replacement for lines 88–97
+
+```html
+<p>The app remembers a few things so it picks up where you left off:</p>
+<ul>
+  <li>whether cards lead with the capital or the lowercase letter;</li>
+  <li>whether the blends and digraphs are switched on;</li>
+  <li>whether the deck is shuffled;</li>
+  <li>which card you were last looking at;</li>
+  <li>which kind of quiz question you last chose;</li>
+  <li>which letters have been answered correctly in the quiz, and in which
+      kind of question.</li>
+</ul>
+<p>The first five are ordinary app preferences. The last is a simple tally so
+the quiz can tell you which letters to come back to — it records letters and
+right-or-wrong, nothing else: no name, no date, no identifier of any kind. You
+can erase it at any time with "Clear what the quiz remembers" on the quiz
+start screen.</p>
+<p>All of it is held in the app's own private storage on the device. None of it
+is personal information, none of it is transmitted anywhere, and all of it is
+deleted along with the app if you remove it.</p>
+```
+
+The effective date on line 75 would move from **15 August 2026** to the day
+this is published.
+
+**This does not affect App Privacy answers in App Store Connect.** Those ask
+what you *collect*, and the answer is still nothing — data that never leaves
+the device is not collected. The policy page is the only thing that needs the
+edit.
